@@ -1,0 +1,128 @@
+/*
+      Course: CS 27500
+      Name: Xavier Richardon
+      Email: xarichar@pnw.edu
+      Assignment: 1
+*/
+import java.awt.*;
+import java.util.*;
+
+public class TestDrive {
+  public static void main (String [] args){
+
+    Scanner scanner = new Scanner(System.in);
+    double newFuelEfficieny;
+    double newFuelLevel;
+    double newDistance;
+
+       int i=1;
+       while (i==1){
+
+         System.out.println("Please enter a fuel efficiency: ");
+         newFuelEfficieny = scanner.nextDouble();
+        Car vechile=new Car(newFuelEfficieny);
+
+
+         //if(newFuelEfficiency ==0){
+         if(vechile.getFuelEfficiency() == 0){
+           System.out.println("Thanks for driving!!!");
+           break;
+           }
+
+         if(vechile.getFuelLevel()==0){
+                //System.out.println("Please enter an amount of fuel: ");
+                //newFuelLevel= scanner.nextDouble();
+                //vechile.addFuel(newFuelLevel);
+                //continue;
+                 System.out.println("Please enter a fuel efficiency: ");
+                 newFuelEfficieny = scanner.nextDouble();
+                 vechile=new Car(newFuelEfficieny);
+
+                 System.out.println("Please enter an amount of fuel: ");
+                 newFuelLevel= scanner.nextDouble();
+                 vechile.addFuel(newFuelLevel);
+
+                 }
+
+         //Car vechile=new Car(newFuelEfficieny);
+
+
+         System.out.println("Please enter an amount of fuel: ");
+         newFuelLevel= scanner.nextDouble();
+         vechile.addFuel(newFuelLevel);
+
+         System.out.println("Please enter a distance to travel: ");
+         newDistance= scanner.nextDouble();
+
+         if(newDistance==0){
+             //System.out.println("Distance to travel is zero. Thanks for driving");
+             //break;
+           System.out.println("Please enter an amount of fuel: ");
+           newFuelLevel= scanner.nextDouble();
+           vechile.addFuel(newFuelLevel);
+
+            }
+         System.out.println("Distance you travelled: "+ vechile.drive(newDistance));
+         System.out.println("Current fuelLevel: " + vechile.getFuelLevel());
+         System.out.println("Current odometer: "+ vechile.getOdometer());
+
+
+
+           while (newFuelLevel>0){
+              System.out.println("Please enter a distance to travel: ");
+              newDistance= scanner.nextDouble();
+
+              if(newDistance==0){
+                System.out.println("Please enter an amount of fuel: ");
+                newFuelLevel= scanner.nextDouble();
+                vechile.addFuel(newFuelLevel);
+
+                //System.out.println("Distance to travel is zero. NO MORE DRIVING");
+                //break;
+                continue;
+              }
+              System.out.println("Distance you travelled: "+ vechile.drive(newDistance));
+              System.out.println("Current fuelLevel: " + vechile.getFuelLevel());
+              System.out.println("Current odometer: "+ vechile.getOdometer());
+
+              if(vechile.getFuelLevel()==0){
+                //System.out.println("Please enter an amount of fuel: ");
+                //newFuelLevel= scanner.nextDouble();
+                //vechile.addFuel(newFuelLevel);
+                //continue;
+                 System.out.println("Please enter a fuel efficiency: ");
+                 newFuelEfficieny = scanner.nextDouble();
+                 vechile=new Car(newFuelEfficieny);
+
+                 System.out.println("Please enter an amount of fuel: ");
+                 newFuelLevel= scanner.nextDouble();
+                 vechile.addFuel(newFuelLevel);
+                 continue;
+                 }
+              /*if(vechile.getFuelEfficiency() == 0 && vechile.getFuelLevel()==0 ){
+                  System.out.println("Please enter a fuel efficiency: ");
+                  newFuelEfficieny = scanner.nextDouble();
+                  vechile=new Car(newFuelEfficieny);
+                  continue;
+                  }
+                */
+                if(newDistance==0 && vechile.getFuelLevel()==0 ){
+                  System.out.println("Please enter a fuel efficiency: ");
+                  newFuelEfficieny = scanner.nextDouble();
+                  vechile=new Car(newFuelEfficieny);
+
+                  System.out.println("Please enter an amount of fuel: ");
+                  newFuelLevel= scanner.nextDouble();
+                  vechile.addFuel(newFuelLevel);
+                  continue;
+                }
+               if(vechile.getFuelEfficiency() == 0){
+                 System.out.println("Thanks for driving!!!");
+                 break;
+               }
+
+
+         }
+       }
+  }
+}
