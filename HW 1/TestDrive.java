@@ -14,20 +14,19 @@ public class TestDrive {
     double newFuelEfficieny;
     double newFuelLevel ;
     double newDistance;
+    //Car vehicle = new Car(newFuelEfficieny);
     
        int i=1;
        int x=1;
        while (i==1){
          
+       Car vehicle = new Car(newFuelEfficieny);
        if(x == 1)
        {
          System.out.println("Please enter a fuel efficiency: ");
-         
          newFuelEfficieny = scanner.nextDouble();
          
-
-
-         //if(newFuelEfficiency ==0){
+         //Car vehicle = new Car(newFuelEfficieny);
          if(newFuelEfficiency == 0){
            System.out.println("Thanks for driving!!!");
            break;
@@ -60,17 +59,13 @@ public class TestDrive {
          if(vehicle.getOdometer() == 0){
            x = 0; 
            continue;
-         }
-         
-         
+             }
+
          }
          
          System.out.println("Distance you travelled: "+ vehicle.drive(newDistance));
          System.out.println("Current fuelLevel: " + vehicle.getFuelLevel());
          System.out.println("Current odometer: "+ vehicle.getOdometer());
-
-         
-        
        }
   }
 }
