@@ -14,7 +14,6 @@ public class TestDrive {
     double newFuelEfficiency=0;
     double newFuelLevel;
     double newDistance;
-    //Car vehicle = new Car(newFuelEfficiency);
     
        int i=1;
        int x=1;
