@@ -11,7 +11,7 @@ public class TestDrive {
   public static void main (String [] args){
 
     Scanner scanner = new Scanner(System.in);
-    double newFuelEfficiency;
+    double newFuelEfficiency=0;
     double newFuelLevel;
     double newDistance;
     //Car vehicle = new Car(newFuelEfficiency);
@@ -20,24 +20,25 @@ public class TestDrive {
        int x=1;
        while (i==1){  
          
-       Car vehicle = new Car(newFuelEfficiency);
+        
        if(x == 1)
        {
          System.out.println("Please enter a fuel efficiency: ");
          newFuelEfficiency = scanner.nextDouble();
-         vehicle.Car(newFuelEfficiency);
+         //vehicle.Car(newFuelEfficiency);
           
          if(newFuelEfficiency == 0){
            System.out.println("Thanks for driving!!!");
            break;
            }
+         
        }
+       
          x = 1;
          System.out.println("Please enter an amount of fuel: ");
+         
          newFuelLevel= scanner.nextDouble();
-         vehicle.addFuel(newFuelLevel);
-
-         if(vehicle.getFuelLevel()==0){
+         if(newFuelLevel==0){
                 //System.out.println("Please enter an amount of fuel: ");
                 //newFuelLevel= scanner.nextDouble();
                 //vehicle.addFuel(newFuelLevel);
@@ -48,22 +49,27 @@ public class TestDrive {
                  vehicle=new Car(newFuelEfficiency);*/           
                  continue;
                  }
+         Car vehicle = new Car(newFuelEfficiency);//= 0 
+         vehicle.addFuel(newFuelLevel);
+
          
-         while( i == 1){
+         
+         while( x == 1){
          System.out.println("Please enter a distance to travel: ");
          newDistance = scanner.nextDouble();
          vehicle.drive(newDistance);
          
-         if(vehicle.getOdometer() == 0){
+         if(newDistance == 0){
            x = 0; 
+           System.out.println("inside");
            continue;
              }
-
-         }
-         
-         System.out.println("Distance you travelled: "+ vehicle.drive(newDistance));
+         System.out.println("Distance you travelled: "+ newDistance);
          System.out.println("Current fuelLevel: " + vehicle.getFuelLevel());
          System.out.println("Current odometer: "+ vehicle.getOdometer());
+         }
+         
+         
        }
   }
 }
