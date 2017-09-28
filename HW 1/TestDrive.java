@@ -11,22 +11,22 @@ public class TestDrive {
   public static void main (String [] args){
 
     Scanner scanner = new Scanner(System.in);
-    double newFuelEfficieny;
-    double newFuelLevel ;
+    double newFuelEfficiency;
+    double newFuelLevel;
     double newDistance;
-    //Car vehicle = new Car(newFuelEfficieny);
+    //Car vehicle = new Car(newFuelEfficiency);
     
        int i=1;
        int x=1;
-       while (i==1){
+       while (i==1){  
          
-       Car vehicle = new Car(newFuelEfficieny);
+       Car vehicle = new Car(newFuelEfficiency);
        if(x == 1)
        {
          System.out.println("Please enter a fuel efficiency: ");
-         newFuelEfficieny = scanner.nextDouble();
-         
-         //Car vehicle = new Car(newFuelEfficieny);
+         newFuelEfficiency = scanner.nextDouble();
+         vehicle.Car(newFuelEfficiency);
+          
          if(newFuelEfficiency == 0){
            System.out.println("Thanks for driving!!!");
            break;
@@ -44,10 +44,8 @@ public class TestDrive {
                 //continue;
                  
                 /* System.out.println("Please enter a fuel efficiency: ");
-                 newFuelEfficieny = scanner.nextDouble();
-                 vehicle=new Car(newFuelEfficieny);*/
-           
-                
+                 newFuelEfficiency = scanner.nextDouble();
+                 vehicle=new Car(newFuelEfficiency);*/           
                  continue;
                  }
          
@@ -69,7 +67,7 @@ public class TestDrive {
        }
   }
 }
-         //Car vehicle=new Car(newFuelEfficieny);
+         //Car vehicle=new Car(newFuelEfficiency);
          /*
 
          System.out.println("Please enter an amount of fuel: ");
@@ -116,8 +114,8 @@ public class TestDrive {
                 //vehicle.addFuel(newFuelLevel);
                 //continue;
                  System.out.println("Please enter a fuel efficiency: ");
-                 newFuelEfficieny = scanner.nextDouble();
-                 vehicle=new Car(newFuelEfficieny);
+                 newFuelEfficiency = scanner.nextDouble();
+                 vehicle=new Car(newFuelEfficiency);
 
                  System.out.println("Please enter an amount of fuel: ");
                  newFuelLevel= scanner.nextDouble();
@@ -126,15 +124,15 @@ public class TestDrive {
                  }
               /*if(vehicle.getFuelEfficiency() == 0 && vehicle.getFuelLevel()==0 ){
                   System.out.println("Please enter a fuel efficiency: ");
-                  newFuelEfficieny = scanner.nextDouble();
-                  vehicle=new Car(newFuelEfficieny);
+                  newFuelEfficiency = scanner.nextDouble();
+                  vehicle=new Car(newFuelEfficiency);
                   continue;
                   }
                 *//*
                 if(newDistance==0 && vehicle.getFuelLevel()==0 ){
                   System.out.println("Please enter a fuel efficiency: ");
-                  newFuelEfficieny = scanner.nextDouble();
-                  vehicle=new Car(newFuelEfficieny);
+                  newFuelEfficiency = scanner.nextDouble();
+                  vehicle=new Car(newFuelEfficiency);
 
                   System.out.println("Please enter an amount of fuel: ");
                   newFuelLevel= scanner.nextDouble();
