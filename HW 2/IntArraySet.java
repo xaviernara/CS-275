@@ -75,7 +75,8 @@ public class IntArraySet extends IntSet
      if (initialCapacity <0){
        throw new IllegalArgumentException 
          ("No negative numbers for initialCapacity " + initialCapacity);
-        data = new int[initialCapacity];
+       
+       data = new int[initialCapacity];
        manyItems=0;
       }
      
@@ -95,12 +96,10 @@ public class IntArraySet extends IntSet
    **/
    public void ensureCapacity(int minimumCapacity)
    {
-     //data = new [minimumCapacity]; 
-     if (data[manyItems] >= minimmumCapacity){
+     data = new int [minimumCapacity]; 
+     if (data[manyItems] >= data[minimumCapacity]){
        data = new int [minimumCapacity]; 
      }
-     else if (
-     
      else{
        throw new OutOfMemoryError
          ("set is out of memory" + minimumCapacity); 
