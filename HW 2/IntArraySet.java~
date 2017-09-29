@@ -33,7 +33,7 @@ public class IntArraySet extends IntSet
    //      rest of data.
    private int[ ] data;
    private int manyItems;
-
+   private
    /**
    * Initialize an empty set with an initial capacity of 10.
    * Note that the addItem method works efficiently (without
