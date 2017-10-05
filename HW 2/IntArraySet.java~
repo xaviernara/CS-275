@@ -33,7 +33,6 @@ public class IntArraySet extends IntSet
    //      rest of data.
    private int[ ] data;
    private int manyItems;
-   private
    /**
    * Initialize an empty set with an initial capacity of 10.
    * Note that the addItem method works efficiently (without
@@ -44,9 +43,13 @@ public class IntArraySet extends IntSet
    *   Indicates insufficient memory for:
    *   new int[10].
    */
+   
+   //Constructor with zero inputs 
    public IntArraySet( )
    {
-
+      final int INITIAL_CAPACITY = 10;
+      manyItems = 0;
+      data = new int[INITIAL_CAPACITY];
    }
 
 
@@ -65,9 +68,18 @@ public class IntArraySet extends IntSet
    * @exception OutOfMemoryError
    *   Indicates insufficient memory for: new int[initialCapacity].
    */
+   
+   //Constructor with initialCapacity for set as a input 
    public IntArraySet(int initialCapacity)
    {
-
+     if (initialCapacity <0){
+       throw new IllegalArgumentException 
+         ("No negative numbers for initialCapacity " + initialCapacity);
+       
+       data = new int[initialCapacity];
+       manyItems=0;
+      }
+     
    }
 
 
@@ -84,7 +96,14 @@ public class IntArraySet extends IntSet
    **/
    public void ensureCapacity(int minimumCapacity)
    {
-
+     data = new int [minimumCapacity]; 
+     if (data[manyItems] >= data[minimumCapacity]){
+       data = new int [minimumCapacity]; 
+     }
+     else{
+       throw new OutOfMemoryError
+         ("set is out of memory" + minimumCapacity); 
+     } 
    }
 
 

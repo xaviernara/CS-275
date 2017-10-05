@@ -12,7 +12,15 @@ public class TestIntArraySet
    {
       IntSet set1 = new IntArraySet( );
       IntSet set2 = new IntArraySet( );
-
+      
+      IntArraySet set12 = new IntArraySet( );
+      //set12.setManyItems(10);
+      set12.ensureCapacity(45); 
+      
+      System.out.println( "set1 = ARRAY " +set12.getCapacity()); //testing to see if the capacity of the data array is changing depending on user input
+      
+    
+      
       set1.add(42);
       if ( !set1.contains(42) )
       {
