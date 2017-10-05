@@ -77,13 +77,15 @@ public class IntArraySet extends IntSet
    //Constructor with initialCapacity for set as a input 
    public IntArraySet(int initialCapacity)
    {
-     if (initialCapacity <0){
+     manyItems = 0;
+	  data = new int[initialCapacity ];
+    /* if (initialCapacity <0){
        throw new IllegalArgumentException 
          ("No negative numbers for initialCapacity " + initialCapacity);
        
        //data = new int[initialCapacity];
        //manyItems=0;
-      }
+      }*/
      
    }
 
@@ -105,7 +107,7 @@ public class IntArraySet extends IntSet
      int [] data_cpy = new int [minimumCapacity ];
      if (minimumCapacity >= data.length){
        for (int i = 0;i<data.length; i++){ 
-           System.out.println("INCHECK");
+           //System.out.println("INCHECK");
             data_cpy[i] = data[i];
             //data.length = new int [minimumCapacity *2]; 
             //System.arraycopy(data, 0,minimumCapacity , 0, manyItems);
@@ -151,14 +153,14 @@ public class IntArraySet extends IntSet
    {
      int[] data_trimed;
      if (data.length != manyItems){
-       for (int i = 0; i<data.length; i++){
+      
            data_trimed= new int [manyItems];
-       }
-       /*
-       for (int i =0; i<data.length; i++){
-         data[i]=data_trimed[i]; 
-        }
-        */
+       
+       
+      // for (int i =0; i<data.length; i++){
+        // data[i]=data_trimed[i]; 
+       // }
+        
      }
    }
 
@@ -183,8 +185,6 @@ public class IntArraySet extends IntSet
    **/
    public void add(int... elements)
    {
-     //int [] data_addedTo= new data [elements];
-     //copied from IntArrayBag class
      ensureCapacity(manyItems+elements.length);
      System.arraycopy(elements, 0, data, manyItems, elements.length);
      manyItems += elements.length;
@@ -212,14 +212,53 @@ public class IntArraySet extends IntSet
    *   that will cause the set to fail. Such large collections should use
    *   a different set implementation.
    **/
-   public void add(IntSet set2) //overloading original add method
+   public void add(IntSet set_x) //overloading original add method
    {
-     //add(set2 + manyItems);
-    /* if(data.length = set2 
-      IntSet data_set2= new data[set2];
-     ensureCapacity(manyItems+set2.size());
-     System.arraycopy(set2.toArray(), 0, data, manyItems, set2.length);
-     manyItems += set2.size();*/
+	 System.out.println("SIZE = "+ getCapacity());
+     boolean unique = true;
+     int cnt = 0;
+     
+     int SIZE = getCapacity()+ set_x.size();
+     //IntSet set3 = new IntArraySet(SIZE);
+     int [] unioned_set = new int[SIZE];
+     //copy data array into unioned_set
+	 trimToSize();
+     for(int i = 0 ; i < getCapacity(); i++){
+           unioned_set[i] = toArray()[i];
+           if (data.length < manyItems){
+             //cnt++;
+           }
+     }
+     
+     for(int i = 0 ; i <= set_x.size(); i++){
+       for(int j = 0 ; j < unioned_set.length; j++){
+        if(set_x.toArray()[i] == unioned_set[j]){
+           unique = false;
+         }
+        }
+		if(unique){
+          unioned_set[manyItems] = set_x.toArray()[i];
+          //cnt++;
+          manyItems++;
+          
+       }
+       unique = true;
+     }
+	 ensureCapacity(unioned_set.length);
+     System.out.printf("UNIONED SET ");
+     for(int i = 0; i < manyItems;i++){
+     System.out.printf("%d ",unioned_set[i]);
+      //add(unioned_set[i]);
+      data[i] = unioned_set[i]; 
+     }
+     System.out.println();
+	 /*System.out.printf(" Unioned Set ");
+	 for(int i = 0; i < cnt;i++){
+      System.out.printf("%d ",unioned_set[i]);
+     }*/
+	      
+       
+     
      
      // toArray()
      //Returns an array containing all of the elements in this list in proper sequence (from first to last element).
@@ -284,7 +323,7 @@ public class IntArraySet extends IntSet
    */
    public int size( )
    {
-     return 1;
+     return manyItems;
 
    }
 
@@ -294,37 +333,12 @@ public class IntArraySet extends IntSet
    */
    public IntSet union(IntSet set2)
    {
-     boolean unique = true;
-     int cnt = 0;
-     
-     int SIZE = data.length + set2.getCapacity();
-     IntSet set3= new data[SIZE];
-     int [] unioned_set = new int[SIZE];
-     //copy data array into unioned_set
-     for(int i = 0 ; i < getCapacity(); i++){
-           unioned_set(i) = toArray()[i];
-           cnt++;
-     }
-     
-     for(int i = 0 ; i < set2.getCapacity(); i++){
-       for(int j = 0 ; j < cnt; j++){
-        if(set2.toArray()[i] == unioned_set[j]){
-           unique = false;
-        }
-        if(unique){
-          unioned_set[cnt] = set2.toArray()[i];
-          cnt++;
-        }
-       }
-     }
-     for(int i = 0; i < cnt;i++){
-      set3.toArray()[i] = unioned_set[i]; 
-     }
-      
-       
-     return set3;
-      // If set2 is null, then a NullPointerException is thrown.
+     IntArraySet result = new IntArraySet(this.size() + set2.size());
 
+      result.add( this.toArray() );
+      result.add(   set2.toArray() );
+      // If set2 is null, then a NullPointerException is thrown.
+      return result;
 
    }
 
@@ -358,8 +372,8 @@ public class IntArraySet extends IntSet
    */
    public int[] toArray()
    {
-     int[] result = new int[manyItems];
-      for (int i = 0; i < manyItems; i++)
+     int[] result = new int[data.length];
+      for (int i = 0; i < data.length; i++)
       {
          result[i] = data[i];
       }
@@ -375,7 +389,7 @@ public class IntArraySet extends IntSet
    public String toString()
    {
       String result = "[";
-      for (int i = 0; i < manyItems; i++)
+      for (int i = 0; i <manyItems; i++)
       {
          if (i > 0)
          {

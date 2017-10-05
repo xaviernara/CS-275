@@ -13,14 +13,27 @@ public class TestIntArraySet
       IntSet set1 = new IntArraySet( );
       IntSet set2 = new IntArraySet( );
       
-      IntArraySet set12 = new IntArraySet( );
+      //IntArraySet set12 = new IntArraySet( );
       //set12.setManyItems(10);
-      set12.ensureCapacity(45); 
+      //set12.ensureCapacity(45); 
       
-      System.out.println( "set1 = ARRAY " +set12.getCapacity()); //testing to see if the capacity of the data array is changing depending on user input
+      //System.out.println( "set1 = ARRAY " +set12.getCapacity()); //testing to see if the capacity of the data array is changing depending on user input
       
-    
-      
+     set1.add(12,13,43,35,33,2,1,8);
+	  set2.add(32,34,53,10,64,23,1,2);
+	  System.out.printf("Old Set 1 = ");
+	  System.out.println(set1);
+     System.out.printf("Old Set 2 = ");
+     
+	  System.out.println(set2);
+	  set2.add(set1);
+	  
+	  
+	  
+	  System.out.printf("\n");
+	  System.out.printf("New Set 2 = ");
+	  System.out.println(set2);
+       
       set1.add(42);
       if ( !set1.contains(42) )
       {
