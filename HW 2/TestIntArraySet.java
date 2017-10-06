@@ -19,8 +19,8 @@ public class TestIntArraySet
       
       //System.out.println( "set1 = ARRAY " +set12.getCapacity()); //testing to see if the capacity of the data array is changing depending on user input
       
-     set1.add(12,13,43,35,33,2,1,8);
-	  set2.add(32,34,53,10,64,23,1,2);
+     set1.subtract(12,13,43,35,33,2,1,8);
+	  set2.subtract(32,34,53,10,64,23,1,2);
 	  System.out.printf("Old Set 1 = ");
 	  System.out.println(set1);
      System.out.printf("Old Set 2 = ");
@@ -28,12 +28,27 @@ public class TestIntArraySet
 	  System.out.println(set2);
 	  set2.add(set1);
 	  
+	  System.out.printf("\n");
+	  System.out.printf("New Set 2 = ");
+	  System.out.println(set2);
+
+/*
+
+     set1.subtract(12,13,43,35,33,2,1,8);
+	  set2.subtract(32,34,53,10,64,23,1,2);
+	  System.out.printf("Old Set 1 = ");
+	  System.out.println(set1);
+     System.out.printf("Old Set 2 = ");
+     
+	  System.out.println(set2);
+	  set2.subtract(set1);
+	  
 	  
 	  
 	  System.out.printf("\n");
 	  System.out.printf("New Set 2 = ");
 	  System.out.println(set2);
-       
+  */     
       set1.add(42);
       if ( !set1.contains(42) )
       {

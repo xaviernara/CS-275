@@ -215,7 +215,8 @@ public class IntArraySet extends IntSet
    public void add(IntSet set_x) //overloading original add method
    {
 	 System.out.println("SIZE = "+ getCapacity());
-     boolean unique = true;
+     boolean unique = true;   //checking for unique numbers in the user input set_x
+
      int cnt = 0;
      
      int SIZE = getCapacity()+ set_x.size();
@@ -242,7 +243,7 @@ public class IntArraySet extends IntSet
           manyItems++;
           
        }
-       unique = true;
+       unique = true; //when the if statement finds a  a un
      }
 	 ensureCapacity(unioned_set.length);
      System.out.printf("UNIONED SET ");
@@ -267,7 +268,8 @@ public class IntArraySet extends IntSet
 
 
     /**
-   * Remove from this set any element of another set that is in this set.
+   *Remove from this set any element of another set that is in this set.
+   *
    * The result is the other set's elements subtracted from this set.
    * @param set2
    *   a set whose elements will be subtracted from this set
@@ -278,7 +280,7 @@ public class IntArraySet extends IntSet
    * @exception NullPointerException
    *   Indicates that set2 is null.
    **/
-   public void subtract(IntSet set2)
+   public void subtract(IntSet subtracrt_set)
    {
     // if (manyItems != set2.size()){
     //   for(int =0; i<data.length; i++)
@@ -286,21 +288,118 @@ public class IntArraySet extends IntSet
       //   data[i] -= set2.size();
       // }
    //  }
+   
+      System.out.println("SIZE = "+ getCapacity());
+     boolean unique = false; //checking for ununique numbers in the subtracrt_set
+     int cnt = 0;
+     
+     int SIZE = getCapacity()+ subtracrt_set.size();
+     //IntSet set3 = new IntArraySet(SIZE);
+     int [] minused_set = new int[SIZE];
+     //copy data array into minused_set
+	 trimToSize();
+    
+     for(int i = 0 ; i < getCapacity(); i++){
+           minused_set[i] = toArray()[i];
+          // if (data.length < manyItems){
+             //cnt++;
+           //}
+     }
+     
+     for(int i = 0 ; i <= subtracrt_set.size(); i++){
+       for(int j = 0 ; j < minused_set.length; j++){
+        if(subtracrt_set.toArray()[i] == minused_set[j]){
+           unique = true;
+            manyItems--;
+         }
+        }
+		if(unique){
+         minused_set[manyItems] = subtracrt_set.toArray()[i];
+          //cnt++;
+          manyItems++;
+          
+       }
+       unique = false;
+     }
+	 ensureCapacity(minused_set.length);
+     System.out.printf("UNIONED SET ");
+     for(int i = 0; i < manyItems;i++){
+     System.out.printf("%d ",minused_set[i]);
+      //add(unioned_set[i]);
+      data[i] = minused_set[i]; 
+     }
+     System.out.println();
+
     }
 
 
+ 
+ 
    /**
-   * {@inheritDoc}
-   */
+   * Remove from this set any of its elements that are not contained in another set.
+   * The result is this set intersected with the other set
+   * @param set2
+   *   a set whose elements will be intersected with this set
+   * @precondition
+   *   The parameter, set2, is not null.
+   * @postcondition
+   *   This set contains the intersection of itself with set2.
+   * @exception NullPointerException
+   *   Indicates that set2 is null.
+   **/
    public void keepCommonElements(IntSet set2)
    {
+    System.out.println("SIZE = "+ getCapacity());
+     boolean CommonElements = true;   //checking for unique numbers in the user input set_x
 
+     //int cnt = 0;
+     
+     int SIZE = getCapacity()+ set_x.size();
+     //IntSet set3 = new IntArraySet(SIZE);
+     int [] unioned_set = new int[SIZE];
+     //copy data array into unioned_set
+	 trimToSize();
+     for(int i = 0 ; i < getCapacity(); i++){
+           unioned_set[i] = toArray()[i];
+           if (data.length < manyItems){
+             //cnt++;
+           }
+       }
+     
+     for(int i = 0 ; i <= set_x.size(); i++){
+       for(int j = 0 ; j < unioned_set.length; j++){
+        if(set_x.toArray()[i] == unioned_set[j]){
+           CommonElements = false;
+         }
+        }
+		if(unique){
+          unioned_set[manyItems] = set_x.toArray()[i];
+          //cnt++;
+          manyItems++;
+          
+       }
+       CommonElements = true; //when the if statement finds a  a un
+     }
+	 ensureCapacity(unioned_set.length);
+     System.out.printf("UNIONED SET ");
+     for(int i = 0; i < manyItems;i++){
+     System.out.printf("%d ",unioned_set[i]);
+      //add(unioned_set[i]);
+      //data[i] = unioned_set[i]; 
+     }
+     
+     return CommonElements;
+     System.out.println();
    }
 
 
    /**
-   * {@inheritDoc}
-   */
+   * Method to determine if a particular element is in this set.
+   * @param target
+   *   the element that needs to be found in this set
+   * @return
+   *   true if the target element is in this set, false otherwise
+   **/
    public boolean contains(int target)
    {
      return true;
@@ -313,7 +412,24 @@ public class IntArraySet extends IntSet
    */
    public boolean remove(int target)
    {
-     return true;
+      int index; // The location of target in the data array.
+
+      // First, set index to the location of target in the data array,
+      // which could be as small as 0 or as large as manyItems-1; If target
+      // is not in the array, then index will be set equal to manyItems;
+      for (index = 0; (index < manyItems) && (target != data[index]); index++);
+         // No work is needed in the body of this for-loop.
+
+      if (index == manyItems)
+         // The target was not found, so nothing is removed.
+         return false;
+      else
+      {  // The target was found at data[index].
+         // So reduce manyItems by 1 and copy the last element onto data[index].
+         manyItems--;
+         data[index] = data[manyItems];
+         return true;
+      }
 
    }
 
