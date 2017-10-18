@@ -169,6 +169,8 @@ public abstract class IntSet
    *   Indicates insufficient memory for the new set.
    **/
    public abstract IntSet minus(IntSet set2);
+   
+   
 
 
    /**
