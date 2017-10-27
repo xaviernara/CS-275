@@ -218,7 +218,7 @@ public class IntArraySet extends IntSet
   System.out.println("SIZE = "+ getCapacity());
      boolean unique = true;   //checking for unique numbers in the user input set_x
 
-     int cnt = 0;
+     //int cnt = 0;
      
      int SIZE = getCapacity()+ set_x.size();
      //IntSet set3 = new IntArraySet(SIZE);
@@ -290,9 +290,10 @@ public class IntArraySet extends IntSet
       // }
    //  }
    
-      System.out.println("SIZE = "+ getCapacity());
+      System.out.println("SIZe = "+ getCapacity());
+      
      boolean unique = false; //checking for ununique numbers in the subtracrt_set
-     int cnt = 0;
+     //int cnt = 0;
      
      int SIZE = getCapacity()+ subtracrt_set.size();
      //IntSet set3 = new IntArraySet(SIZE);
@@ -348,7 +349,7 @@ public class IntArraySet extends IntSet
    * @exception NullPointerException
    *   Indicates that set2 is null.
    **/
-   public void keepCommonElements(IntSet set2)
+   /*public void keepCommonElements(IntSet set2)
    {
     System.out.println("SIZE = "+ getCapacity());
      boolean CommonElements = true;   //checking for common numbers in the user input set_x
@@ -394,7 +395,7 @@ public class IntArraySet extends IntSet
      return CommonElements;
      System.out.println();
    }
-
+/*
 
    /**
    * Method to determine if a particular element is in this set.
@@ -403,17 +404,18 @@ public class IntArraySet extends IntSet
    * @return
    *   true if the target element is in this set, false otherwise
    **/
+/*   
    public boolean contains(int target)
    {
      for (int i =0; i<manyItems ; i++){
        //if( data[i]= target){
-       if(manyIItems == targets)
+       if(manyItems == target)
          return true;
        else 
          return false;
      }
    }
-
+*/
 
    /**
    * {@inheritDoc}
@@ -452,26 +454,106 @@ public class IntArraySet extends IntSet
    }
 
 
-   /**
-   * {@inheritDoc}
-   */
-   public IntSet union(IntSet set2)
+   
+ /**
+   * Create a new set that contains ALL the elements from this set and the other set.
+   * @param set2
+   *   the second set in the union
+   * @precondition
+   *   set2 is not null, and
+   *   getCapacity( ) + set2.getCapacity( ) &lt;= Integer.MAX_VALUE.
+   * @return
+   *   the union of this set and set2
+   * @exception NullPointerException
+   *   Indicates that the argument is null.
+   * @exception OutOfMemoryError
+   *   Indicates insufficient memory for the new set.
+   * @note
+   *   An attempt to create a set with a capacity beyond
+   *   Integer.MAX_VALUE will cause an arithmetic overflow
+   *   that will cause the set to fail. Such large collections should use
+   *   a different set implementation.
+   **/  
+    public IntSet union(IntSet set2)
    {
      IntArraySet result = new IntArraySet(this.size() + set2.size());
 
       result.add( this.toArray() );
-      result.add(   set2.toArray() );
-      // If set2 is null, then a NullPointerException is thrown.
+      result.add( set2.toArray() );
+      //If set2 is null, then a NullPointerException is thrown.
       return result;
+      
+      
+      
 
    }
 
+ /**
+   * Create a new set that contains all the elements that are in both this set and the other set.
+   *(ie create a new set that just has a the common elements from both sets in it
+   * @param set2
+   
+   *   the second set in the intersection
+   * @precondition
+   *   set2 is not null
+   * @postcondition
+   *   the returned set is smaller than either this set or set2
+   * @return
+   *   the intersection of this set and set2
+   * @exception NullPointerException
+   *   Indicates that the argument is null.
+   * @exception OutOfMemoryError
+   *   Indicates insufficient memory for the new set.
+   **/
 
-   /**
-   * {@inheritDoc}
-   */
    public IntSet intersection(IntSet set2)
    {
+      //boolean unique = false; //checking for ununique numbers in the subtracrt_set
+     //int cnt = 0;
+     
+   
+      System.out.println("INTERSECTION SIZE = "+ getCapacity());
+     boolean unique = false;   //checking for unique numbers in the user input set_x
+
+     //int cnt = 0;
+     
+     int SIZE = getCapacity()+ set_x.size();
+     //IntSet set3 = new IntArraySet(SIZE);
+     int [] intersection_set = new int[SIZE];
+     //copy data array into unioned_set
+  trimToSize();
+     for(int i = 0 ; i < getCapacity(); i++){
+           intersection_set[i] = toArray()[i];
+           //if (data.length < manyItems){
+             //cnt++;
+           //}
+     }
+     
+     for(int i = 0 ; i <= set2.size(); i++){
+       for(int j = 0 ; j < intersection_set.length; j++){
+        if(set_x.toArray()[i] == intersection_set[j]){
+           unique = true;
+           intersection_set[manyItems] = set2.toArray()[i];
+           manyItems++;
+         }
+        }
+ // if(unique){
+   //       intersection_set[manyItems] = set2.toArray()[i];
+          //cnt++;
+     //     manyItems++;
+          
+       }
+      // unique = true; //when the if statement finds a  a un
+     }
+  ensureCapacity(intersection_set.length);
+     System.out.printf("intersection set");
+     for(int i = 0; i < manyItems;i++){
+     System.out.printf("%d ",intersection_set[i]);
+      //add(unioned_set[i]);
+      data[i] = intersection_set[i]; 
+     }
+     System.out.println();
+
      return set2;
       // If set2 is null, then a NullPointerException is thrown.
 
