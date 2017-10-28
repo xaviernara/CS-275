@@ -214,28 +214,40 @@ public class IntArraySet extends IntSet
    **/
    public void add(IntSet set_x) //overloading original add method
    {
+<<<<<<< HEAD
   System.out.println("SIZE = "+ getCapacity());
      boolean unique = true;   //checking for unique numbers in the user input set_x
 
      //int cnt = 0;
+=======
+     System.out.println("SIZE = "+ getCapacity());
+     boolean unique = true;   //checking for unique numbers in the user input set_x
+     
+     int cnt = 0;
+>>>>>>> f374672460c6b3043462beabf7714465409abbe6
      
      int SIZE = getCapacity()+ set_x.size();
      //IntSet set3 = new IntArraySet(SIZE);
      int [] unioned_set = new int[SIZE];
      //copy data array into unioned_set
+<<<<<<< HEAD
   trimToSize();
+=======
+     trimToSize();
+>>>>>>> f374672460c6b3043462beabf7714465409abbe6
      for(int i = 0 ; i < getCapacity(); i++){
-           unioned_set[i] = toArray()[i];
-           if (data.length < manyItems){
-             //cnt++;
-           }
+       unioned_set[i] = toArray()[i];
+       if (data.length < manyItems){
+         //cnt++;
+       }
      }
      
      for(int i = 0 ; i <= set_x.size(); i++){
        for(int j = 0 ; j < unioned_set.length; j++){
-        if(set_x.toArray()[i] == unioned_set[j]){
+         if(set_x.toArray()[i] == unioned_set[j]){
            unique = false;
          }
+<<<<<<< HEAD
         }
   if(unique){
           unioned_set[manyItems] = set_x.toArray()[i];
@@ -246,18 +258,37 @@ public class IntArraySet extends IntSet
        unique = true; //when the if statement finds a  a un
      }
   ensureCapacity(unioned_set.length);
+=======
+       }
+       if(unique){
+         unioned_set[manyItems] = set_x.toArray()[i];
+         //cnt++;
+         manyItems++;
+         
+       }
+       unique = true; //when the if statement finds a  a un
+     }
+     ensureCapacity(unioned_set.length);
+>>>>>>> f374672460c6b3043462beabf7714465409abbe6
      System.out.printf("UNIONED SET ");
      for(int i = 0; i < manyItems;i++){
-     System.out.printf("%d ",unioned_set[i]);
-      //add(unioned_set[i]);
-      data[i] = unioned_set[i]; 
+       System.out.printf("%d ",unioned_set[i]);
+       //add(unioned_set[i]);
+       data[i] = unioned_set[i]; 
      }
      System.out.println();
   /*System.out.printf(" Unioned Set ");
   for(int i = 0; i < cnt;i++){
       System.out.printf("%d ",unioned_set[i]);
      }*/
+<<<<<<< HEAD
 
+=======
+       
+       
+     
+     
+>>>>>>> f374672460c6b3043462beabf7714465409abbe6
      // toArray()
      //Returns an array containing all of the elements in this list in proper sequence (from first to last element).
      
@@ -295,7 +326,11 @@ public class IntArraySet extends IntSet
      //IntSet set3 = new IntArraySet(SIZE);
      int [] minused_set = new int[capacity];
      //copy data array into minused_set
+<<<<<<< HEAD
      trimToSize();
+=======
+  trimToSize();
+>>>>>>> f374672460c6b3043462beabf7714465409abbe6
     
      for(int i = 0 ; i < getCapacity(); i++){
            minused_set[i] = toArray()[i];
@@ -311,8 +346,13 @@ public class IntArraySet extends IntSet
           // manyItems--;
          }
         }
+<<<<<<< HEAD
       if(unique){
          minused_set[manyItems] = subtract_set.toArray()[i];
+=======
+  if(unique){
+         minused_set[manyItems] = subtracrt_set.toArray()[i];
+>>>>>>> f374672460c6b3043462beabf7714465409abbe6
           //cnt++;
           manyItems--;
           
@@ -320,7 +360,11 @@ public class IntArraySet extends IntSet
        unique = false;
      }
   ensureCapacity(minused_set.length);
+<<<<<<< HEAD
      System.out.printf("Subtracted SET ");
+=======
+     System.out.printf("UNIONED SET ");
+>>>>>>> f374672460c6b3043462beabf7714465409abbe6
      for(int i = 0; i < manyItems;i++){
      System.out.printf("%d ",minused_set[i]);
       //add(unioned_set[i]);
@@ -356,7 +400,12 @@ public class IntArraySet extends IntSet
      //IntSet set3 = new IntArraySet(SIZE);
      int [] unioned_set = new int[SIZE];
      //copy data array into unioned_set
+<<<<<<< HEAD
      trimToSize();
+=======
+      trimToSize();
+      
+>>>>>>> f374672460c6b3043462beabf7714465409abbe6
      for(int i = 0 ; i < getCapacity(); i++){
            unioned_set[i] = toArray()[i];
            if (data.length < manyItems){
@@ -370,7 +419,11 @@ public class IntArraySet extends IntSet
            CommonElements = false;
          }
         }
+<<<<<<< HEAD
         if(unique){
+=======
+  if(unique){
+>>>>>>> f374672460c6b3043462beabf7714465409abbe6
           unioned_set[manyItems] = set_x.toArray()[i];
           //cnt++;
           manyItems++;
@@ -378,8 +431,11 @@ public class IntArraySet extends IntSet
        }
        CommonElements = true; //when the if statement finds a  a un
      }
+<<<<<<< HEAD
      
      
+=======
+>>>>>>> f374672460c6b3043462beabf7714465409abbe6
   ensureCapacity(unioned_set.length);
      System.out.printf("UNIONED SET ");
      for(int i = 0; i < manyItems;i++){
