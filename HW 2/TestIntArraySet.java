@@ -23,16 +23,34 @@ public class TestIntArraySet
       
       //System.out.println( "set1 = ARRAY " +set12.getCapacity()); //testing to see if the capacity of the data array is changing depending on user input
       
-     set1.subtract(12,13,43,35,33,2,1,8);
-     set2.subtract(32,34,53,10,64,23,1,2);
-     
-    //set2.subtract(12,13,63,37,20,2,1,8);
-    System.out.printf("Old Set 1 = ");
+      //set2.subtract(32,34,53,10,64,23,1,2);
+    //set2.add(12,13,63,37,20,2,1,8); 
+    set1.add(1,2,3,4,5);
+    set2.add(1,2,3,4,5,6,7); 
+    
+   set2.intersection(set1);
+    //set2.subtract(set1)
+    
+    if ( 0 != set2.size() )
+      {
+         System.out.println("9. There is something wrong with subtract().");
+         return;
+      }
+   
+  // if ( set2 != )
+     // {
+        // System.out.println("9. There is something wrong with subtract().");
+     //    return;
+     // }
+
+
+    
+    
+     System.out.printf("Old Set 1 = ");
      System.out.println(set1);
      System.out.printf("Old Set 2 = ");
-     
-   System.out.println(set2);
-   set2.subtract(set1);
+     System.out.println(set2);
+  // set2.subtract(set1);
    
    System.out.printf("\n");
    System.out.printf("New Set 2 = ");

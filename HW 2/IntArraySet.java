@@ -105,7 +105,7 @@ public class IntArraySet extends IntSet
    **/
    public void ensureCapacity(int minimumCapacity)
    {
-     int [] data_cpy = new int [minimumCapacity ];
+     int [] data_cpy = new int [minimumCapacity];
      if (minimumCapacity >= data.length){
        for (int i = 0;i<data.length; i++){ 
            //System.out.println("INCHECK");
@@ -114,7 +114,6 @@ public class IntArraySet extends IntSet
             //System.arraycopy(data, 0,minimumCapacity , 0, manyItems);
             data = new int[minimumCapacity];
             
-          
            }
        
        for(int i = 0 ; i < data.length; i++){
@@ -258,10 +257,7 @@ public class IntArraySet extends IntSet
   for(int i = 0; i < cnt;i++){
       System.out.printf("%d ",unioned_set[i]);
      }*/
-       
-       
-     
-     
+
      // toArray()
      //Returns an array containing all of the elements in this list in proper sequence (from first to last element).
      
@@ -281,7 +277,7 @@ public class IntArraySet extends IntSet
    * @exception NullPointerException
    *   Indicates that set2 is null.
    **/
-   public void subtract(IntSet subtracrt_set)
+      public void subtract(IntSet subtract_set)
    {
     // if (manyItems != set2.size()){
     //   for(int =0; i<data.length; i++)
@@ -290,16 +286,16 @@ public class IntArraySet extends IntSet
       // }
    //  }
    
-      System.out.println("SIZe = "+ getCapacity());
+      System.out.println("capacity = "+ getCapacity());
       
-     boolean unique = false; //checking for ununique numbers in the subtracrt_set
+     boolean unique = false; //checking for ununique numbers in the subtract_set
      //int cnt = 0;
      
-     int SIZE = getCapacity()+ subtracrt_set.size();
+     int capacity = getCapacity();
      //IntSet set3 = new IntArraySet(SIZE);
-     int [] minused_set = new int[SIZE];
+     int [] minused_set = new int[capacity];
      //copy data array into minused_set
-  trimToSize();
+     trimToSize();
     
      for(int i = 0 ; i < getCapacity(); i++){
            minused_set[i] = toArray()[i];
@@ -308,23 +304,23 @@ public class IntArraySet extends IntSet
            //}
      }
      
-     for(int i = 0 ; i <= subtracrt_set.size(); i++){
+     for(int i = 0 ; i <= subtract_set.size(); i++){
        for(int j = 0 ; j < minused_set.length; j++){
-        if(subtracrt_set.toArray()[i] == minused_set[j]){
+        if(subtract_set.toArray()[i] == minused_set[j]){
            unique = true;
-            manyItems--;
+          // manyItems--;
          }
         }
-  if(unique){
-         minused_set[manyItems] = subtracrt_set.toArray()[i];
+      if(unique){
+         minused_set[manyItems] = subtract_set.toArray()[i];
           //cnt++;
-          manyItems++;
+          manyItems--;
           
        }
        unique = false;
      }
   ensureCapacity(minused_set.length);
-     System.out.printf("UNIONED SET ");
+     System.out.printf("Subtracted SET ");
      for(int i = 0; i < manyItems;i++){
      System.out.printf("%d ",minused_set[i]);
       //add(unioned_set[i]);
@@ -508,20 +504,19 @@ public class IntArraySet extends IntSet
 
    public IntSet intersection(IntSet set2)
    {
-      //boolean unique = false; //checking for ununique numbers in the subtracrt_set
+      //boolean unique = false; //checking for ununique numbers in the subtract_set
      //int cnt = 0;
-     
-   
-      System.out.println("INTERSECTION SIZE = "+ getCapacity());
-     boolean unique = false;   //checking for unique numbers in the user input set_x
+      System.out.println("INTERSECTION capacity = "+ getCapacity());
+      boolean common = false;   //checking for common numbers in the user input set2
 
      //int cnt = 0;
      
-     int SIZE = getCapacity()+ set_x.size();
+     int SIZE = getCapacity()+ set2.size();
      //IntSet set3 = new IntArraySet(SIZE);
      int [] intersection_set = new int[SIZE];
-     //copy data array into unioned_set
-  trimToSize();
+     //copy data array into intersection_set  
+     
+     trimToSize();
      for(int i = 0 ; i < getCapacity(); i++){
            intersection_set[i] = toArray()[i];
            //if (data.length < manyItems){
@@ -531,34 +526,34 @@ public class IntArraySet extends IntSet
      
      for(int i = 0 ; i <= set2.size(); i++){
        for(int j = 0 ; j < intersection_set.length; j++){
-        if(set_x.toArray()[i] == intersection_set[j]){
-           unique = true;
-           intersection_set[manyItems] = set2.toArray()[i];
-           manyItems++;
+        if(set2.toArray()[i] == intersection_set[j]){
+           common = true;
+           //intersection_set[manyItems] = set2.toArray()[i];
+           //manyItems++;
          }
         }
- // if(unique){
-   //       intersection_set[manyItems] = set2.toArray()[i];
-          //cnt++;
-     //     manyItems++;
+  if(common){
+  
+         intersection_set[manyItems] = set2.toArray()[i];
+         manyItems--;
           
        }
       // unique = true; //when the if statement finds a  a un
-     }
-  ensureCapacity(intersection_set.length);
+     
+   ensureCapacity(intersection_set.length);
      System.out.printf("intersection set");
-     for(int i = 0; i < manyItems;i++){
+     for(i = 0; i < manyItems;i++){
      System.out.printf("%d ",intersection_set[i]);
       //add(unioned_set[i]);
       data[i] = intersection_set[i]; 
      }
      System.out.println();
 
-     return set2;
+     //return set2;
       // If set2 is null, then a NullPointerException is thrown.
-
-
    }
+   return set2;
+  }
 
 
    /**
@@ -580,8 +575,6 @@ public class IntArraySet extends IntSet
    {
      return set2;
       // If set2 is null, then a NullPointerException is thrown.
-
-
    }
 
 
