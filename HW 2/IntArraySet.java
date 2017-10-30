@@ -557,7 +557,6 @@ public class IntArraySet extends IntSet
    **/
 
       public void subtract(IntSet subtract_set)
-
    {
 
     // if (manyItems != set2.size()){
@@ -571,73 +570,37 @@ public class IntArraySet extends IntSet
       // }
 
    //  }
-
-   
-
       System.out.println("capacity = "+ getCapacity());
-
-      
-
-     boolean unique = false; //checking for ununique numbers in the subtract_set
+      boolean unique = true; //checking for ununique numbers in the subtract_set
 
      //int cnt = 0;
-
-     
-
      int capacity = getCapacity();
-
      //IntSet set3 = new IntArraySet(SIZE);
-
      int [] minused_set = new int[capacity];
-
      //copy data array into minused_set
-
      trimToSize();
-
-    
-
+     
      for(int i = 0 ; i < getCapacity(); i++){
-
            minused_set[i] = toArray()[i];
-
           // if (data.length < manyItems){
-
              //cnt++;
-
            //}
-
      }
 
-     
-
-     for(int i = 0 ; i <= subtract_set.size(); i++){
-
+     for(int i = 0 ; i < subtract_set.size(); i++){
        for(int j = 0 ; j < minused_set.length; j++){
-
         if(subtract_set.toArray()[i] == minused_set[j]){
-
-           unique = true;
-
+           unique = false;
           // manyItems--;
-
          }
-
         }
 
-      if(unique){
-
-         minused_set[manyItems] = subtract_set.toArray()[i];
-
+      if(unique == false){
+         minused_set[i] = data[size() - 1];
           //cnt++;
-
-          manyItems--;
-
-          
-
-       }
-
-       unique = false;
-
+          manyItems--;         
+        }
+       unique = true;
      }
 
   ensureCapacity(minused_set.length);
@@ -655,18 +618,8 @@ public class IntArraySet extends IntSet
      }
 
      System.out.println();
-
-
-
     }
 
-
-
-
-
- 
-
- 
 
    /**
 
@@ -839,43 +792,24 @@ public class IntArraySet extends IntSet
    {
 
       int index; // The location of target in the data array.
-
-
-
       // First, set index to the location of target in the data array,
-
       // which could be as small as 0 or as large as manyItems-1; If target
-
       // is not in the array, then index will be set equal to manyItems;
 
       for (index = 0; (index < manyItems) && (target != data[index]); index++);
-
          // No work is needed in the body of this for-loop.
-
-
-
       if (index == manyItems)
-
          // The target was not found, so nothing is removed.
-
          return false;
-
       else
 
       {  // The target was found at data[index].
 
          // So reduce manyItems by 1 and copy the last element onto data[index].
-
          manyItems--;
-
          data[index] = data[manyItems];
-
          return true;
-
       }
-
-
-
    }
 
 
@@ -973,21 +907,12 @@ public class IntArraySet extends IntSet
  /**
 
    * Create a new set that contains all the elements that are in both this set and the other set.
-
    *(ie create a new set that just has a the common elements from both sets in it
-
    * @param set2
-
-   
-
    *   the second set in the intersection
-
    * @precondition
-
    *   set2 is not null
-
    * @postcondition
-
    *   the returned set is smaller than either this set or set2
 
    * @return
@@ -1011,81 +936,52 @@ public class IntArraySet extends IntSet
    {
 
       //boolean unique = false; //checking for ununique numbers in the subtract_set
-
      //int cnt = 0;
-
       System.out.println("INTERSECTION capacity = "+ getCapacity());
-
       boolean common = false;   //checking for common numbers in the user input set2
-
-
-
+      
      //int cnt = 0;
-
-     
-
      int SIZE = getCapacity()+ set2.size();
+     IntSet intersection_set = new IntArraySet( );
 
      //IntSet set3 = new IntArraySet(SIZE);
-
-     int [] intersection_set = new int[SIZE];
+     int [] intersection_set_ary = new int[SIZE];
 
      //copy data array into intersection_set  
-
-     
-
      trimToSize();
 
-     for(int i = 0 ; i < getCapacity(); i++){
-
-           intersection_set[i] = toArray()[i];
-
+     for(int i = 0 ; i < size(); i++){
+           intersection_set_ary[i] = toArray()[i];
            //if (data.length < manyItems){
-
              //cnt++;
-
            //}
-
      }
-
      
-
      for(int i = 0 ; i <= set2.size(); i++){
-
-       for(int j = 0 ; j < intersection_set.length; j++){
-
-        if(set2.toArray()[i] == intersection_set[j]){
-
-           common = true;
-
+       for(int j = 0 ; j < intersection_set_ary.length; j++){
+        if(set2.toArray()[i] == intersection_set_ary[j]){
+          // common = true;
            //intersection_set[manyItems] = set2.toArray()[i];
-
            //manyItems++;
-
+           System.out.println("INCHECK");
+           System.out.println(intersection_set_ary.length);
+            intersection_set.add(set2.toArray()[i]);  
          }
-
         }
+        
 
-  if(common){
-
-  
-
+/*
+    if(common){
+        // remove()[i];         
          intersection_set[manyItems] = set2.toArray()[i];
-
          manyItems--;
-
-          
-
        }
 
       // unique = true; //when the if statement finds a  a un
-
-     
-
+      
    ensureCapacity(intersection_set.length);
-
      System.out.printf("intersection set");
-
+     
      for(i = 0; i < manyItems;i++){
 
      System.out.printf("%d ",intersection_set[i]);
@@ -1097,18 +993,16 @@ public class IntArraySet extends IntSet
      }
 
      System.out.println();
-
-
-
      //return set2;
-
       // If set2 is null, then a NullPointerException is thrown.
 
    }
-
-   return set2;
+*/
+   //return set2;
 
   }
+  return intersection_set ;
+ }
 
 
 
