@@ -383,17 +383,10 @@ public class IntArraySet extends IntSet
            unique = false;
          }
         
-           
+         
          if(unique){
-            //COPY array SIZE ADJUSTMENT
-            int[] data_cpy = new int[size()];
-            for(int a = 0 ; a < size(); a++){
-               data_cpy[a] = data[a];
-            }
-            data = new int[size() + 1];
-            for(int a = 0 ; a < size(); a++){
-               data[a] = data_cpy[a];
-            }
+         
+             
              data[size() + cnt] = elements[i];
              cnt++;
              manyItems++;
