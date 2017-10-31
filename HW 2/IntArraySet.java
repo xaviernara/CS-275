@@ -371,16 +371,42 @@ public class IntArraySet extends IntSet
    public void add(int... elements)
 
    {
-
-     ensureCapacity(manyItems+elements.length);
-
-     System.arraycopy(elements, 0, data, manyItems, elements.length);
-
-     manyItems += elements.length;
-
-
-
+    //IntSet added_elements_set = new IntArraySet(); 
+    boolean unique = true;
+    int cnt =1;
+    int x = 0 ; 
+    //ensureCapacity(manyItems+elements.length);
+    
+     for(int i = 0 ; i <= elements.length; i++){
+       for(int j = 0 ; j < size(); j++){
+        if(elements[i] == data[j]){
+           unique = false;
+         }
+        
+           
+         if(unique){
+            //COPY array SIZE ADJUSTMENT
+            int[] data_cpy = new int[size()];
+            for(int a = 0 ; a < size(); a++){
+               data_cpy[a] = data[a];
+            }
+            data = new int[size() + 1];
+            for(int a = 0 ; a < size(); a++){
+               data[a] = data_cpy[a];
+            }
+             data[size() + cnt] = elements[i];
+             cnt++;
+             manyItems++;
+          }
+          unique = true;
+        }
+     }
+    // added_elements_set = System.arraycopy(elements, 0, data, manyItems, elements.length);
+     //manyItems += elements.length;
+     
+    // add(added_elements_set);
    }
+   
 
 
 
@@ -430,82 +456,54 @@ public class IntArraySet extends IntSet
 
    {
 
-  System.out.println("SIZE = "+ getCapacity());
+  //System.out.println("SIZE = "+ getCapacity());
 
      boolean unique = true;   //checking for unique numbers in the user input set_x
-
-
-
-     //int cnt = 0;
-
+     int cnt = 1;
      
-
-     int SIZE = getCapacity()+ set_x.size();
-
+     int SIZE = size() + set_x.size();
      //IntSet set3 = new IntArraySet(SIZE);
 
-     int [] unioned_set = new int[SIZE];
-
+     int [] added_set= new int[SIZE];
      //copy data array into unioned_set
 
   trimToSize();
 
-     for(int i = 0 ; i < getCapacity(); i++){
+     for(int i = 0 ; i < size(); i++){
 
-           unioned_set[i] = toArray()[i];
-
-           if (data.length < manyItems){
-
-             //cnt++;
-
-           }
+           added_set[i] = toArray()[i];
 
      }
 
      
 
      for(int i = 0 ; i <= set_x.size(); i++){
-
-       for(int j = 0 ; j < unioned_set.length; j++){
-
-        if(set_x.toArray()[i] == unioned_set[j]){
-
+       for(int j = 0 ; j < size(); j++){
+        if(set_x.toArray()[i] == added_set[j]){
            unique = false;
-
          }
-
         }
 
-  if(unique){
-
-          unioned_set[manyItems] = set_x.toArray()[i];
-
-          //cnt++;
-
+      if(unique){
+          added_set[size() + cnt] = set_x.toArray()[i];
+          cnt++;
           manyItems++;
-
-          
-
        }
-
        unique = true; //when the if statement finds a  a un
-
      }
-
-  ensureCapacity(unioned_set.length);
+     
+  ensureCapacity(added_set.length);
 
      System.out.printf("UNIONED SET ");
 
      for(int i = 0; i < manyItems;i++){
 
-     System.out.printf("%d ",unioned_set[i]);
+     System.out.printf("%d ",added_set[i]);
 
       //add(unioned_set[i]);
 
-      data[i] = unioned_set[i]; 
-
+      data[i] = added_set[i]; 
      }
-
      System.out.println();
 
   /*System.out.printf(" Unioned Set ");
@@ -841,65 +839,31 @@ public class IntArraySet extends IntSet
  /**
 
    * Create a new set that contains ALL the elements from this set and the other set.
-
    * @param set2
-
    *   the second set in the union
-
    * @precondition
-
    *   set2 is not null, and
-
    *   getCapacity( ) + set2.getCapacity( ) &lt;= Integer.MAX_VALUE.
-
    * @return
-
    *   the union of this set and set2
-
    * @exception NullPointerException
-
    *   Indicates that the argument is null.
-
    * @exception OutOfMemoryError
-
    *   Indicates insufficient memory for the new set.
-
    * @note
-
    *   An attempt to create a set with a capacity beyond
-
    *   Integer.MAX_VALUE will cause an arithmetic overflow
-
    *   that will cause the set to fail. Such large collections should use
-
    *   a different set implementation.
-
    **/  
 
     public IntSet union(IntSet set2)
-
    {
-
      IntArraySet result = new IntArraySet(this.size() + set2.size());
-
-
-
       result.add( this.toArray() );
-
       result.add( set2.toArray() );
-
       //If set2 is null, then a NullPointerException is thrown.
-
       return result;
-
-      
-
-      
-
-      
-
-
-
    }
 
 
@@ -945,10 +909,11 @@ public class IntArraySet extends IntSet
      IntSet intersection_set = new IntArraySet( );
 
      //IntSet set3 = new IntArraySet(SIZE);
-     int [] intersection_set_ary = new int[SIZE];
+     int [] intersection_set_ary = new int[SIZE]; 
 
-     //copy data array into intersection_set  
-     trimToSize();
+        trimToSize();
+     
+    //copy data array into intersection_set  
 
      for(int i = 0 ; i < size(); i++){
            intersection_set_ary[i] = toArray()[i];
@@ -1001,7 +966,7 @@ public class IntArraySet extends IntSet
    //return set2;
 
   }
-  return intersection_set ;
+  return intersection_set;
  }
 
 
@@ -1062,9 +1027,9 @@ public class IntArraySet extends IntSet
 
    {
 
-     int[] result = new int[data.length];
+     int[] result = new int[manyItems];
 
-      for (int i = 0; i < data.length; i++)
+      for (int i = 0; i < manyItems; i++)
 
       {
 
@@ -1073,11 +1038,6 @@ public class IntArraySet extends IntSet
       }
 
       return result;
-
-
-
-
-
    }
 
 
@@ -1091,41 +1051,23 @@ public class IntArraySet extends IntSet
    */
 
    public String toString()
-
    {
-
       String result = "[";
 
       for (int i = 0; i <manyItems; i++)
-
       {
-
          if (i > 0)
-
          {
-
             result += " ";
-
          }
 
          result += data[i];
-
          if (i < manyItems-1)
-
          {
-
             result += ",";
-
          }
-
       }
-
       result += "]";
-
       return result;
-
    }
-
-
-
 }//IntArraySet

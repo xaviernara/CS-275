@@ -27,7 +27,7 @@ public class TestIntArraySet
       //set2.subtract(32,34,53,10,64,23,1,2);
     //set2.add(12,13,63,37,20,2,1,8); 
     set1.add(1,2,3,4,5,6,7);
-    set2.add(15,5,4,3,2,1); 
+    set2.add(15,12,33,67,89,80); 
     System.out.println("SIZE"+set2.size());
     
     
@@ -36,14 +36,29 @@ public class TestIntArraySet
      System.out.printf("Old Set 2 = ");
      System.out.println(set2);
     
-   set3 = set1.intersection(set2);
-    
-    
-     System.out.printf("After Old Set 1 = ");
+    // set3 = set1.add(set2);
+     set3=set1.union(set2);
+    // set1.add(set2);
+     System.out.printf("Set 1 added to set 2 = ");
      System.out.println(set1);
-     System.out.printf("After Old Set 2 = ");
+    /* System.out.printf("After Old Set 2 = ");
      System.out.println(set2);
-      System.out.println("after SIZE"+set2.size());
+     System.out.println("after SIZE"+set2.size());*/
+     System.out.printf("Set 1 union Set 2 = ");
+     System.out.println(set3);
+     
+    // System.out.printf("ToARRAY CHECK = " + set1.toArray());
+     for(int i = 0 ; i < set1.toArray().length; i++){
+         System.out.printf("%d" , set1.toArray()[i]);
+     
+     }
+     
+     
+     
+
+
+      
+     
       
       
      /* set3 = set1.intersection( set2 );
