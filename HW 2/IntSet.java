@@ -78,7 +78,7 @@ public abstract class IntSet
    * @exception NullPointerException
    *   Indicates that set2 is null.
    **/
-//   public abstract void keepCommonElements(IntSet set2);
+ public abstract void keepCommonElements(IntSet set2);
 
 
    /**
@@ -88,7 +88,7 @@ public abstract class IntSet
    * @return
    *   true if the target element is in this set, false otherwise
    **/
- //  public abstract boolean contains(int target);
+  public abstract boolean contains(int target);
 
 
    /**

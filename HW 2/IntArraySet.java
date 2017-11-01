@@ -371,29 +371,68 @@ public class IntArraySet extends IntSet
    public void add(int... elements)
 
    {
+    //manyItems = elements.length;
     //IntSet added_elements_set = new IntArraySet(); 
     boolean unique = true;
     int cnt =1;
     int x = 0 ; 
+    int check_size = 0 ; 
+   // int SIZE = size() + elements.length;
+    //int [] data_cpy = new int[SIZE];
+    
     //ensureCapacity(manyItems+elements.length);
     
-     for(int i = 0 ; i <= elements.length; i++){
-       for(int j = 0 ; j < size(); j++){
-        if(elements[i] == data[j]){
-           unique = false;
+    //System.out.printf("CHECK I J %d %d " , i , j);
+    System.out.println("ELEMENT LENGTH " +elements.length );
+    
+    //Add After Copy is made
+       
+     for( int i = 0 ; i < elements.length; i++){
+     //Dealing with the Zeroth case.
+           if(manyItems == 0 ){
+              manyItems++;
+              data[0] = elements[0];
+            }
+            
+            check_size++;
+            
+            if(check_size > data.length){
+            
+            int[] data_cpy = new int[data.length];
+            for(int a = 0 ; a < data.length; a++){
+               data_cpy[a] = data[a];
+             
+            }
+             data = new int[data.length + 1];
+            for(int a = 0 ; a < data.length; a++){
+               data[a] = data_cpy[a];
+            } 
+            }
+            
+            
+       for(int  j = 0 ; j < size(); j++){
+         
+           if(elements[i] != data[j]){
+              unique = true;
+            }
+            else{
+               unique = false;
+               break;
+            }
+         }     
+            if(unique){
+               
+                data[size()] = elements[i];
+                
+                manyItems++;
+             }
+         
+           
          }
         
-         
-         if(unique){
-         
-             
-             data[size() + cnt] = elements[i];
-             cnt++;
-             manyItems++;
-          }
-          unique = true;
-        }
-     }
+    
+     System.out.println("SIZE " +size());
+     
     // added_elements_set = System.arraycopy(elements, 0, data, manyItems, elements.length);
      //manyItems += elements.length;
      
@@ -449,70 +488,7 @@ public class IntArraySet extends IntSet
 
    {
 
-  //System.out.println("SIZE = "+ getCapacity());
-
-     boolean unique = true;   //checking for unique numbers in the user input set_x
-     int cnt = 1;
-     
-     int SIZE = size() + set_x.size();
-     //IntSet set3 = new IntArraySet(SIZE);
-
-     int [] added_set= new int[SIZE];
-     //copy data array into unioned_set
-
-  trimToSize();
-
-     for(int i = 0 ; i < size(); i++){
-
-           added_set[i] = toArray()[i];
-
-     }
-
-     
-
-     for(int i = 0 ; i <= set_x.size(); i++){
-       for(int j = 0 ; j < size(); j++){
-        if(set_x.toArray()[i] == added_set[j]){
-           unique = false;
-         }
-        }
-
-      if(unique){
-          added_set[size() + cnt] = set_x.toArray()[i];
-          cnt++;
-          manyItems++;
-       }
-       unique = true; //when the if statement finds a  a un
-     }
-     
-  ensureCapacity(added_set.length);
-
-     System.out.printf("UNIONED SET ");
-
-     for(int i = 0; i < manyItems;i++){
-
-     System.out.printf("%d ",added_set[i]);
-
-      //add(unioned_set[i]);
-
-      data[i] = added_set[i]; 
-     }
-     System.out.println();
-
-  /*System.out.printf(" Unioned Set ");
-
-  for(int i = 0; i < cnt;i++){
-
-      System.out.printf("%d ",unioned_set[i]);
-
-     }*/
-
-
-
-     // toArray()
-
-     //Returns an array containing all of the elements in this list in proper sequence (from first to last element).
-
+     this.add(set_x.toArray());
      
 
    }
@@ -610,6 +586,40 @@ public class IntArraySet extends IntSet
 
      System.out.println();
     }
+    
+    
+    
+    /**
+    *Practice Keep Commons
+    **/
+     public void keepCommonElements(IntSet set2)
+      {
+           int [] common_set = new int [size()];
+           
+           //for (int i = 0; i < size(); i++){
+            // common_set[i] = toArray()[i];
+          // }
+         
+          for(int i = 0 ; i < set2.size(); i++){
+          System.out.printf("%d",set2.toArray()[i]);
+          }
+            System.out.println();
+            for(int i = 0 ; i < set2.size(); i++){
+               System.out.printf("Contains Value %b for %d \n",contains(set2.toArray()[i]),set2.toArray()[i] );
+               //if(set2.toArray()[i].contains(common_set[j])){
+                if(contains(set2.toArray()[i]) == false){
+                   remove(set2.toArray()[i]);
+                   remove(set2.toArray()[i]);
+                   //System.out.println("IN");
+                   //common_set[i] = data[size()];
+                 }
+                 //else {
+                  //remove(data[i]);
+                 //}*/            
+          
+        }
+      
+      }
 
 
    /**
@@ -636,7 +646,7 @@ public class IntArraySet extends IntSet
 
    **/
 
-   /*public void keepCommonElements(IntSet set2)
+  /* public void keepCommonElements(IntSet set2)
 
    {
 
@@ -728,7 +738,7 @@ public class IntArraySet extends IntSet
 
    }
 
-/*
+*/
 
 
 
@@ -746,29 +756,23 @@ public class IntArraySet extends IntSet
 
    **/
 
-/*   
+   
 
    public boolean contains(int target)
 
    {
+       boolean contains_t = true;
 
      for (int i =0; i<manyItems ; i++){
-
        //if( data[i]= target){
-
-       if(manyItems == target)
-
-         return true;
-
-       else 
-
-         return false;
-
-     }
+       if(data[i] == target)
+         return  true;
+          }
+     return false;
 
    }
 
-*/
+
 
 
 
