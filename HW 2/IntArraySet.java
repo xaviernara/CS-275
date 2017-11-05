@@ -175,9 +175,6 @@ public class IntArraySet extends IntSet
        //manyItems=0;
 
       }*/
-
-     
-
    }
 
 
@@ -209,7 +206,6 @@ public class IntArraySet extends IntSet
    **/
 
    public void ensureCapacity(int minimumCapacity)
-
    {
 
      int [] data_cpy = new int [minimumCapacity];
@@ -227,9 +223,6 @@ public class IntArraySet extends IntSet
             //System.arraycopy(data, 0,minimumCapacity , 0, manyItems);
 
             data = new int[minimumCapacity];
-
-            
-
            }
 
        
@@ -586,12 +579,21 @@ public class IntArraySet extends IntSet
 
      System.out.println();
     }
-    
-    
-    
-    /**
-    *Practice Keep Commons
-    **/
+   
+   /**
+   * Remove from this set any of its elements that are not contained in another set.
+   * The result is this set intersected with the other set
+   * @param set2
+   *   a set whose elements will be intersected with this set
+   * @precondition
+   *   The parameter, set2, is not null.
+   * @postcondition
+   *   This set contains the intersection of itself with set2.
+   * @exception NullPointerException
+   *   Indicates that set2 is null.
+   **/
+   
+   
      public void keepCommonElements(IntSet set2)
       {
            int [] common_set = new int [size()];
@@ -608,7 +610,7 @@ public class IntArraySet extends IntSet
                System.out.printf("Contains Value %b for %d \n",contains(set2.toArray()[i]),set2.toArray()[i] );
                //if(set2.toArray()[i].contains(common_set[j])){
                 if(contains(set2.toArray()[i]) == false){
-                   remove(set2.toArray()[i]);
+                   //remove(set2.toArray[i]);
                    remove(set2.toArray()[i]);
                    //System.out.println("IN");
                    //common_set[i] = data[size()];
@@ -896,41 +898,25 @@ public class IntArraySet extends IntSet
 
    {
 
-      //boolean unique = false; //checking for ununique numbers in the subtract_set
-     //int cnt = 0;
-      System.out.println("INTERSECTION capacity = "+ getCapacity());
-      boolean common = false;   //checking for common numbers in the user input set2
-      
-     //int cnt = 0;
-     int SIZE = getCapacity()+ set2.size();
-     IntSet intersection_set = new IntArraySet( );
+       int [] set2_array = new int [size()];
+      IntSet minused_set = new IntArraySet();
 
-     //IntSet set3 = new IntArraySet(SIZE);
-     int [] intersection_set_ary = new int[SIZE]; 
-
-        trimToSize();
-     
-    //copy data array into intersection_set  
-
-     for(int i = 0 ; i < size(); i++){
-           intersection_set_ary[i] = toArray()[i];
-           //if (data.length < manyItems){
-             //cnt++;
-           //}
-     }
-     
-     for(int i = 0 ; i <= set2.size(); i++){
-       for(int j = 0 ; j < intersection_set_ary.length; j++){
-        if(set2.toArray()[i] == intersection_set_ary[j]){
-          // common = true;
-           //intersection_set[manyItems] = set2.toArray()[i];
-           //manyItems++;
-           System.out.println("INCHECK");
-           System.out.println(intersection_set_ary.length);
-            intersection_set.add(set2.toArray()[i]);  
-         }
-        }
+          for(int i = 0 ; i < size(); i++){
+           minused_set.add(toArray()[i]);
+           }
+           
+          for(int j = 0 ; j < set2.size(); j++){
+             set2_array[j] = toArray()[j];
+           }
+              for(int j = 0 ; j < set2_array.length; j++){
+                 if(minused_set.contains(set2_array[j])){
+                   minused_set.remove(set2_array[j]);
+                 }
+                             
         
+       }
+    return  minused_set;        
+     }   
 
 /*
     if(common){
@@ -961,56 +947,51 @@ public class IntArraySet extends IntSet
    }
 */
    //return set2;
-
-  }
-  return intersection_set;
- }
+ // }
+// }
 
 
 
 
 
    /**
-
    * Create a new set that contains all the elements from this set except those from the other set.
-
    * @param set2
-
    *   the second set in the subtraction
-
    * @precondition
-
    *   set2 is not null
-
    * @postcondition
-
    *   the returned set is smaller than this set
-
    * @return
-
    *   the subtraction of set2 from this set
-
    * @exception NullPointerException
-
    *   Indicates that the argument is null.
-
    * @exception OutOfMemoryError
-
    *   Indicates insufficient memory for the new set.
-
    **/
 
    public IntSet minus(IntSet set2)
+   {  
+    
+      int [] set2_array = new int [size()];
+      IntSet minused_set = new IntArraySet();
 
-   {
-
-     return set2;
-
-      // If set2 is null, then a NullPointerException is thrown.
-
-   }
-
-
+          for(int i = 0 ; i < size(); i++){
+           minused_set.add(toArray()[i]);
+           }
+           
+          for(int j = 0 ; j < set2.size(); j++){
+             set2_array[j] = toArray()[j];
+           }
+           for(int j = 0 ; j < set2_array.length; j++){
+              if(minused_set.contains(set2_array[j])){
+                minused_set.remove(set2_array[j]);
+              }
+                             
+        
+       }
+    return  minused_set;
+}
 
 
 
@@ -1021,19 +1002,13 @@ public class IntArraySet extends IntSet
    */
 
    public int[] toArray()
-
    {
-
      int[] result = new int[manyItems];
 
       for (int i = 0; i < manyItems; i++)
-
       {
-
          result[i] = data[i];
-
       }
-
       return result;
    }
 
