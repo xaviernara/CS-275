@@ -296,27 +296,16 @@ public class IntArraySet extends IntSet
    public void trimToSize( )
 
    {
-
      int[] data_trimed;
 
      if (data.length != manyItems){
-
-      
-
-           data_trimed= new int [manyItems];
-
-       
-
-       
+       data_trimed= new int [manyItems];
 
       // for (int i =0; i<data.length; i++){
 
         // data[i]=data_trimed[i]; 
 
        // }
-
-        
-
      }
 
    }
@@ -596,8 +585,8 @@ public class IntArraySet extends IntSet
    
      public void keepCommonElements(IntSet set2)
       {
-           int [] common_set = new int [size()];
-           
+           int [] common_array = new int [size()];
+           IntSet common_set = new IntArraySet();
            //for (int i = 0; i < size(); i++){
             // common_set[i] = toArray()[i];
           // }
@@ -895,27 +884,23 @@ public class IntArraySet extends IntSet
 
 
    public IntSet intersection(IntSet set2)
-
    {
-
        int [] set2_array = new int [size()];
-      IntSet minused_set = new IntArraySet();
+      IntSet intersection_set = new IntArraySet();
 
           for(int i = 0 ; i < size(); i++){
-           minused_set.add(toArray()[i]);
+           intersection_set.add(toArray()[i]);
            }
            
           for(int j = 0 ; j < set2.size(); j++){
              set2_array[j] = toArray()[j];
            }
               for(int j = 0 ; j < set2_array.length; j++){
-                 if(minused_set.contains(set2_array[j])){
-                   minused_set.remove(set2_array[j]);
+                 if(intersection_set.contains(set2_array[j])){
+                   intersection_set.remove(set2_array[j]);
                  }
-                             
-        
        }
-    return  minused_set;        
+    return  intersection_set;        
      }   
 
 /*
@@ -985,10 +970,10 @@ public class IntArraySet extends IntSet
            }
            for(int j = 0 ; j < set2_array.length; j++){
               if(minused_set.contains(set2_array[j])){
+               //if(minused_set==set2_array[j]){
                 minused_set.remove(set2_array[j]);
+               
               }
-                             
-        
        }
     return  minused_set;
 }

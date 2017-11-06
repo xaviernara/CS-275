@@ -27,7 +27,7 @@ public class TestIntArraySet
       //set2.subtract(32,34,53,10,64,23,1,2);
     //set2.add(12,13,63,37,20,2,1,8); 
     set1.add(1,2,3,4,5,6,7);
-    set2.add(15,17,33,67,89,80); 
+    set2.add(7,17,33,67,89,80); 
     System.out.println("SIZE"+set2.size());
     
     
@@ -37,9 +37,9 @@ public class TestIntArraySet
      System.out.println(set2);
      System.out.println("DOES set 2 contain 80 = " + set2.contains(80));
     // set3 = set1.add(set2);
-     set3= set1.minus(set2);
+     set3=set1.union(set2);
     // set1.add(set2);
-     System.out.printf("Set 1 Minused to set 2 = ");
+     System.out.printf("Set 1 keep common to set 2 = ");
      System.out.println(set3);
      
     /* System.out.printf("After Old Set 2 = ");
