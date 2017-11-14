@@ -184,44 +184,26 @@ public class IntArraySet extends IntSet
    /**
 
    * Change the current capacity of this set.
-
    * @param minimumCapacity
-
    *   the new capacity for this set
-
    * @postcondition
-
    *   This set's capacity has been changed to at least minimumCapacity.
-
-   * 
-
    *   If the capacity was already at or greater than minimumCapacity,
-
    *   then the capacity is left unchanged.
-
    * @exception OutOfMemoryError
-
    *   Indicates insufficient memory for: new int[minimumCapacity].
-
    **/
 
    public void ensureCapacity(int minimumCapacity)
    {
-
      int [] data_cpy = new int [minimumCapacity];
-
      if (minimumCapacity >= data.length){
-
        for (int i = 0;i<data.length; i++){ 
-
            //System.out.println("INCHECK");
-
             data_cpy[i] = data[i];
-
             //data.length = new int [minimumCapacity *2]; 
 
             //System.arraycopy(data, 0,minimumCapacity , 0, manyItems);
-
             data = new int[minimumCapacity];
            }
 
@@ -317,37 +299,21 @@ public class IntArraySet extends IntSet
 
 
     /**
-
    * Add new elements to this set. If any of the given elements is already
-
    * in the set, that element is ignored. If the new elements would take this
-
    * set beyond its current capacity, then the capacity is increased
-
    * in order to add the new elements.
-
    * @param elements
-
    *   (a variable-arity argument)
-
    *   one or more new elements that are being inserted
-
    * @postcondition
-
    *   A copy of each new element has been added to this set.
-
    * @exception OutOfMemoryError
-
    *   Indicates insufficient memory for increasing the set's capacity.
-
    * @note
-
    *   An attempt to increase the capacity beyond
-
    *   Integer.MAX_VALUE will cause the set to fail with an
-
    *   arithmetic overflow.
-
    **/
 
    public void add(int... elements)
@@ -607,34 +573,22 @@ public class IntArraySet extends IntSet
                  //else {
                   //remove(data[i]);
                  //}*/            
-          
         }
-      
       }
 
 
    /**
 
    * Remove from this set any of its elements that are not contained in another set.
-
    * The result is this set intersected with the other set
-
    * @param set2
-
    *   a set whose elements will be intersected with this set
-
    * @precondition
-
    *   The parameter, set2, is not null.
-
    * @postcondition
-
    *   This set contains the intersection of itself with set2.
-
    * @exception NullPointerException
-
    *   Indicates that set2 is null.
-
    **/
 
   /* public void keepCommonElements(IntSet set2)
@@ -734,23 +688,15 @@ public class IntArraySet extends IntSet
 
 
    /**
-
    * Method to determine if a particular element is in this set.
-
    * @param target
-
    *   the element that needs to be found in this set
-
    * @return
-
    *   true if the target element is in this set, false otherwise
-
    **/
 
    
-
    public boolean contains(int target)
-
    {
        boolean contains_t = true;
 
@@ -774,10 +720,9 @@ public class IntArraySet extends IntSet
    */
 
    public boolean remove(int target)
-
    {
-
-      int index; // The location of target in the data array.
+      int index; 
+      // The location of target in the data array.
       // First, set index to the location of target in the data array,
       // which could be as small as 0 or as large as manyItems-1; If target
       // is not in the array, then index will be set equal to manyItems;
@@ -788,7 +733,6 @@ public class IntArraySet extends IntSet
          // The target was not found, so nothing is removed.
          return false;
       else
-
       {  // The target was found at data[index].
 
          // So reduce manyItems by 1 and copy the last element onto data[index].
@@ -798,10 +742,6 @@ public class IntArraySet extends IntSet
       }
    }
 
-
-
-
-
    /**
 
    * {@inheritDoc}
@@ -809,23 +749,12 @@ public class IntArraySet extends IntSet
    */
 
    public int size( )
-
    {
-
      return manyItems;
-
-
-
    }
-
-
-
-
-
-   
+  
 
  /**
-
    * Create a new set that contains ALL the elements from this set and the other set.
    * @param set2
    *   the second set in the union
@@ -853,11 +782,8 @@ public class IntArraySet extends IntSet
       //If set2 is null, then a NullPointerException is thrown.
       return result;
    }
-
-
-
+   
  /**
-
    * Create a new set that contains all the elements that are in both this set and the other set.
    *(ie create a new set that just has a the common elements from both sets in it
    * @param set2
@@ -866,19 +792,12 @@ public class IntArraySet extends IntSet
    *   set2 is not null
    * @postcondition
    *   the returned set is smaller than either this set or set2
-
    * @return
-
    *   the intersection of this set and set2
-
    * @exception NullPointerException
-
    *   Indicates that the argument is null.
-
    * @exception OutOfMemoryError
-
    *   Indicates insufficient memory for the new set.
-
    **/
 
 
@@ -900,8 +819,9 @@ public class IntArraySet extends IntSet
                    intersection_set.remove(set2_array[j]);
                  }
        }
-    return  intersection_set;        
+         return  intersection_set;        
      }   
+
 
 /*
     if(common){
@@ -989,7 +909,6 @@ public class IntArraySet extends IntSet
    public int[] toArray()
    {
      int[] result = new int[manyItems];
-
       for (int i = 0; i < manyItems; i++)
       {
          result[i] = data[i];
@@ -1010,14 +929,12 @@ public class IntArraySet extends IntSet
    public String toString()
    {
       String result = "[";
-
       for (int i = 0; i <manyItems; i++)
       {
          if (i > 0)
          {
             result += " ";
          }
-
          result += data[i];
          if (i < manyItems-1)
          {
@@ -1027,4 +944,5 @@ public class IntArraySet extends IntSet
       result += "]";
       return result;
    }
+   
 }//IntArraySet
