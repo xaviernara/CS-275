@@ -8,11 +8,6 @@
 */
 public class TestIntArraySet
 {
-   public static void main(String[ ] args)
-   {
-      IntSet set1 = new IntArraySet( );
-      IntSet set2 = new IntArraySet( );
-      IntSet set3 = new IntArraySet( );
       
       //IntSet set1 = new IntSet( );
       //IntSet set2 = new IntSet( );
@@ -26,126 +21,45 @@ public class TestIntArraySet
       
       //set2.subtract(32,34,53,10,64,23,1,2);
     //set2.add(12,13,63,37,20,2,1,8); 
-    set1.add(1,2,3,4,5,6,7);
-    set2.add(7,17,33,67,89,80); 
-    System.out.println("SIZE"+set2.size());
+   // set1.add(1,2,3,4,5,6,7);
+    //set2.add(7,17,33,67,89,80); 
+   // System.out.println("SIZE"+set2.size());
     
     
-     System.out.printf("Old Set 1 = ");
-     System.out.println(set1);
-     System.out.printf("Old Set 2 = ");
-     System.out.println(set2);
-     System.out.println("DOES set 2 contain 80 = " + set2.contains(80));
+     //System.out.printf("Old Set 1 = ");
+     //System.out.println(set1);
+     //System.out.printf("Old Set 2 = ");
+    // System.out.println(set2);
+     //System.out.println("DOES set 2 contain 80 = " + set2.contains(80));
     // set3 = set1.add(set2);
-     set3=set1.union(set2);
+     //set3=set1.union(set2);
+     //set1.remove(7);
+    // System.out.println("remove" +set1);
+     
+    // set3=set1.intersection(set2);
     // set1.add(set2);
-     System.out.printf("Set 1 keep common to set 2 = ");
-     System.out.println(set3);
+     //System.out.printf("Set 1 intersection to set 2 = " + set3);
+     //set1.keepCommonElements(set2);
+     
+    // System.out.println(set1.keepCommonElements(set2));
      
     /* System.out.printf("After Old Set 2 = ");
      System.out.println(set2);
      System.out.println("after SIZE"+set2.size());*/
      //System.out.printf("Set 1 keepCommonElements Set 2 = ");
-     //System.out.println(set1.keepCommonElements(set2));
+     //System.out.println(set1);
      
     // System.out.printf("ToARRAY CHECK = " + set1.toArray());
      //for(int i = 0 ; i < set1.toArray().length; i++){
        //  System.out.printf("%d" , set1.toArray()[i]);
     // }
      
-     
-     
 
+   public static void main(String[ ] args)
+   {
+      IntSet set1 = new IntArraySet( );
+      IntSet set2 = new IntArraySet( );
 
-      
-     
-      
-      
-     /* set3 = set1.intersection( set2 );
-      System.out.println( "set1 = " + set1 );
-      System.out.println( "set2 = " + set2 );
-      System.out.println( "set3 = set1 intersection with set2 = " + set3 );
-      System.out.println();
-      if ( 3 != set3.size()
-        || !set3.contains(20)
-        || !set3.contains(21)
-        || !set3.contains(22) )
-      {
-         System.out.println("16. There is something wrong with intersection().");
-         return;
-      }
-      if ( 5 != set1.size()
-        || !set1.contains(18)
-        || !set1.contains(19)
-        || !set1.contains(20)
-        || !set1.contains(21)
-        || !set1.contains(22) )
-      {
-         System.out.println("17. There is something wrong with intersection().");
-         return;
-      }
-      if ( 7 != set2.size()
-        || !set2.contains(20)
-        || !set2.contains(21)
-        || !set2.contains(22)
-        || !set2.contains(23)
-        || !set2.contains(24)
-        || !set2.contains(25)
-        || !set2.contains(26) )
-      {
-         System.out.println("18. There is something wrong with intersection().");
-         return;
-      }*/
-
-    
-   //if ( 0 != set2.size() )
-     // {
-         //System.out.println("9. There is something wrong with subtract().");
-         //return;
-      //}
-   
-  // if ( set2 != )
-     // {
-        // System.out.println("9. There is something wrong with subtract().");
-     //    return;
-     // }
-
-
-    
-    
-  // set2.subtract(set1);
-   
-   /*System.out.printf("\n");
-   System.out.printf("New Set 2 = ");
-   System.out.println(set2);
-   
-    
-   System.out.printf("\n");
-   System.out.printf("New Set 1 = ");
-   System.out.println(set1);
-   
-   System.out.printf("\n");
-   System.out.printf("New Set 3 = ");
-   System.out.println(set3);
-
-
-/*
-
-     set1.subtract(12,13,43,35,33,2,1,8);
-   set2.subtract(32,34,53,10,64,23,1,2);
-   System.out.printf("Old Set 1 = ");
-   System.out.println(set1);
-     System.out.printf("Old Set 2 = ");
-     
-   System.out.println(set2);
-   set2.subtract(set1);
-   
-   
-   
-   System.out.printf("\n");
-   System.out.printf("New Set 2 = ");
-   System.out.println(set2);
-     
       set1.add(42);
       if ( !set1.contains(42) )
       {
@@ -383,9 +297,5 @@ public class TestIntArraySet
       }
 
       System.out.println("Your class IntArraySet passed all the tests.");
-      
-      */
-   } //main()
-   
-   
-}  //TestIntArraySet
+   }
+}
