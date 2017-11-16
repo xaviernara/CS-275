@@ -8,10 +8,14 @@
 */
 public class TestIntArraySet
 {
+public static void main(String[ ] args)
+   {
+
       
-      //IntSet set1 = new IntSet( );
-      //IntSet set2 = new IntSet( );
-      
+      IntSet set1 = new IntArraySet( );
+      IntSet set2 = new IntArraySet( );
+      IntSet set3 = new IntArraySet( );
+
       
       //IntArraySet set12 = new IntArraySet( );
       //set12.setManyItems(10);
@@ -20,15 +24,26 @@ public class TestIntArraySet
       //System.out.println( "set1 = ARRAY " +set12.getCapacity()); //testing to see if the capacity of the data array is changing depending on user input
       
       //set2.subtract(32,34,53,10,64,23,1,2);
-    //set2.add(12,13,63,37,20,2,1,8); 
-   // set1.add(1,2,3,4,5,6,7);
-    //set2.add(7,17,33,67,89,80); 
+    set1.add(1,2,3,4,5,6,7);
+    set2.add(7,17,33,67,89,80); 
+  
+    //set2.subtract()
    // System.out.println("SIZE"+set2.size());
+    //set3=set1.union(set2);
+    set1.subtract(set1);
     
     
-     //System.out.printf("Old Set 1 = ");
-     //System.out.println(set1);
-     //System.out.printf("Old Set 2 = ");
+     System.out.println("Old Set 1 = ");
+     System.out.println(set1);
+     System.out.println("Old Set 2 = ");
+     System.out.println(set2);
+
+     
+     System.out.println("Set 1 subtract to set 2 = " + set1);
+     
+     }
+    }
+
     // System.out.println(set2);
      //System.out.println("DOES set 2 contain 80 = " + set2.contains(80));
     // set3 = set1.add(set2);
@@ -54,7 +69,7 @@ public class TestIntArraySet
        //  System.out.printf("%d" , set1.toArray()[i]);
     // }
      
-
+/*
    public static void main(String[ ] args)
    {
       IntSet set1 = new IntArraySet( );
@@ -298,4 +313,5 @@ public class TestIntArraySet
 
       System.out.println("Your class IntArraySet passed all the tests.");
    }
-}
+   
+}*/

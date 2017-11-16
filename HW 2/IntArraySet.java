@@ -157,24 +157,9 @@ public class IntArraySet extends IntSet
    public IntArraySet(int initialCapacity)
 
    {
-
      manyItems = 0;
+     data = new int[initialCapacity ];
 
-   data = new int[initialCapacity ];
-
-    /* if (initialCapacity <0){
-
-       throw new IllegalArgumentException 
-
-         ("No negative numbers for initialCapacity " + initialCapacity);
-
-       
-
-       //data = new int[initialCapacity];
-
-       //manyItems=0;
-
-      }*/
    }
 
 
@@ -456,7 +441,7 @@ public class IntArraySet extends IntSet
      //copy data array into minused_set
      trimToSize();
      
-     for(int i = 0 ; i < getCapacity(); i++){
+     for(int i = 0 ; i < capacity; i++){
            minused_set[i] = toArray()[i];
              }
 
@@ -488,6 +473,7 @@ public class IntArraySet extends IntSet
 
      System.out.println();
     }
+   
    
    /**
    * Remove from this set any of its elements that are not contained in another set.
