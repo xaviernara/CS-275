@@ -13,11 +13,17 @@
     <DeclaringType>IntLinkedSeq</DeclaringType>
     <Depth>1</Depth>
   </Scope>
-  <Scope id="1">
+  <Scope id="2">
     <Name>main</Name>
     <Signature>([Ljava/lang/String;)V</Signature>
     <DeclaringType>TestIntLinkedSeq_ver1</DeclaringType>
     <Depth>0</Depth>
+  </Scope>
+  <Scope id="1">
+    <Name>catenation</Name>
+    <Signature>(LIntSeq;)LIntSeq;</Signature>
+    <DeclaringType>IntLinkedSeq</DeclaringType>
+    <Depth>1</Depth>
   </Scope>
   <Frame>
     <Bounds>
@@ -39,9 +45,23 @@
   <Frame>
     <Bounds>
       <AutoSize>true</AutoSize>
+      <X>80</X>
+      <Y>360</Y>
+      <W>538</W>
+      <H>230</H>
+    </Bounds>
+    <Viewer>
+      <ScopeID>1</ScopeID>
+      <Expression>`local IntSeq` s2</Expression>
+      <ViewerClass>java__lang__Object_LinkedView</ViewerClass>
+    </Viewer>
+  </Frame>
+  <Frame>
+    <Bounds>
+      <AutoSize>true</AutoSize>
       <X>30</X>
       <Y>70</Y>
-      <W>409</W>
+      <W>165</W>
       <H>102</H>
     </Bounds>
     <Viewer>
@@ -53,13 +73,13 @@
   <Frame>
     <Bounds>
       <AutoSize>true</AutoSize>
-      <X>110</X>
-      <Y>270</Y>
-      <W>241</W>
+      <X>80</X>
+      <Y>360</Y>
+      <W>424</W>
       <H>82</H>
     </Bounds>
     <Viewer>
-      <ScopeID>1</ScopeID>
+      <ScopeID>2</ScopeID>
       <Expression>((IntLinkedSeq) `local IntSeq` seq1).cursor</Expression>
       <ViewerClass>java__lang__Object_LinkedView</ViewerClass>
     </Viewer>

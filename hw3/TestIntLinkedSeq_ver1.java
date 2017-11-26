@@ -14,10 +14,18 @@ public class TestIntLinkedSeq_ver1
       seq1.addAfter(78);
       seq1.addAfter(90);
       seq1.addFirst(33);
+      seq1.start();
+      seq1.removeLast();
+      seq1.advance();
       seq1.removeCurrent();
       seq1.addFirst(12);
       seq1.addLast(1);
       seq1.addLast(19);
+      seq1.reverse();
+      //seq1.catenation(seq1);
+      
+      System.out.println("cancatenate"+seq1.catenation(seq1) );
+
       
       //seq1.removeFirst();
       

@@ -35,8 +35,10 @@ public class IntLinkedSeq extends IntSeq
    public IntLinkedSeq( )
    {
       //IntSeq seq = new IntLinkedSeq();
-      //head = new IntNode();
-      //tail= head;
+      IntNode head =null;
+      IntNode tail= head;
+      IntNode cursor =head;
+      
 
    }
 
@@ -187,10 +189,23 @@ public class IntLinkedSeq extends IntSeq
    */
    public void addLast(int element)
    {
-      tail.setLink( new IntNode(element, null));
+   
+      if (tail.getLink()== null){
+         tail.setLink( new IntNode(element, null));
+         tail = tail.getLink();
       //tail = new IntNode(element, null);
-      manyItems++;
-      tail = tail.getLink();
+         manyItems++;
+       }
+       
+       else{
+         tail.setLink( new IntNode(element, tail.getLink()));
+         tail = tail.getLink();
+      //tail = new IntNode(element, null);
+         manyItems++;
+       }
+       
+    
+     
       System.out.println("manyItems = " + manyItems);
       
       //cursor = tail;
@@ -235,8 +250,7 @@ public class IntLinkedSeq extends IntSeq
        if(cursor!=null)
          return true; 
       else 
-         return false;   
-      
+         return false;    
    }
 
 
@@ -318,7 +332,8 @@ public class IntLinkedSeq extends IntSeq
         //if (cursor ==  tail)  // ( null == cursor.getLink() )
           //         throw new Error("nothing there");
 
-        if ( null != cursor.getLink().getLink() )
+        //if ( null != cursor.getLink().getLink() )
+        if (isCurrent() == true)
          {
             cursor.setLink(cursor.getLink());
          }
@@ -369,9 +384,34 @@ public class IntLinkedSeq extends IntSeq
    }
 
 
+  /**
+   * Remove the element at the end of this sequence.
+   *
+   * @param none
+   * @precondition
+   *   The sequence is not empty.
+   * @postcondition
+   *   The last element of the sequence is deleted from the sequence.
+   *   If this was the current element, then the current element status
+   *   is invalidated.
+   * @exception IllegalStateException
+   *   Indicates that the sequence is empty,
+   *   so removeLast() may not be called.
+   */
+
      public void removeLast( )
    {
-
+      IntNode ptr;
+      ptr=head;
+         for (int i=0; ptr!=null && i<size()-1; i++){
+            ptr.getLink();
+            //if (ptr == null || ptr.getLink()== null)
+            if (ptr.getLink()== null){
+               //tail.setLink(ptr.getLink()-1);
+               tail=ptr;
+               ptr.getLink().getLink();
+             }
+         }   
 
    }
    
@@ -395,8 +435,10 @@ public class IntLinkedSeq extends IntSeq
    */
    public void advance( )
    {
-
-
+      if (cursor.getLink() != null) 
+         cursor.setLink(cursor.getLink()); 
+      else
+         cursor = null;
    }
 
 
@@ -499,10 +541,34 @@ public class IntLinkedSeq extends IntSeq
 
    
    public IntSeq catenation(IntSeq s2)
-   {
+   {  
+      IntSeq newSeq = new IntLinkedSeq();
+      IntNode head1;
+      IntNode head2;
+      IntNode tail2;
+      IntNode cursor2;
+      IntNode ptr2;
+      ptr2=head;
+      head2=null;
+      
+      
+      while (head!=null){
+         ptr2=ptr2.getLink();
+         
+         if (ptr2== null)
+           // head2.setLink(ptr2.getLink()); 
+           //head2.setLink(tail); 
+           head2=ptr2.getLink();
+           
+         //if(head2==null)
+            //return head;
+         //if(head==null)
+            //return head2;    
+     }        
+      //head=cursor;
+      //tail=head;
 
-
-      return null; // Replace this return statement with your own code:
+      return newSeq; // Replace this return statement with your own code:
    }
    
    
@@ -516,10 +582,35 @@ public class IntLinkedSeq extends IntSeq
    }
 
 
-   
+    /**
+   * Create a new sequence that contains all the elements from
+   * this sequence in the reverse order. The returned sequence
+   * should not be backed by this sequence (so changes to the
+   * returned sequence are not reflected in this sequence).
+   * The new sequence should not have a current element.
+   *
+   * @param none
+   * @return
+   *   a new sequence that has the elements of this
+   *   in their reverse order (with no current element)
+   */ 
    public IntSeq reverse( )
    {
+      IntNode currentPtr = head;
+      IntNode prevPtr=null;
+      IntNode nextPtr=null;
+      
+      while (currentPtr!=null){
+         nextPtr=currentPtr.getLink();
+         //currentPtr.getLink()=prevPtr;
+         prevPtr=currentPtr.getLink();
 
+         prevPtr=currentPtr;
+         currentPtr=nextPtr;
+         }
+         head=prevPtr;
+      
+      
 
       return null; // Replace this return statement with your own code:
    }
@@ -535,19 +626,18 @@ public class IntLinkedSeq extends IntSeq
    
    public int[] toArray( )
    {
-      int seqArray[];
+      int[] seqArray = new int[size()] ;
       int index =0;
       IntNode ptr = head;
       
       while(head!= null){
+         seqArray[index]= ptr.getData();
          
          ptr.getLink();
          //seqArray[index]  = ptr.getData() ;
-         index= ptr.getData();
-         
+         //index= ptr.getData();
+         index++;
          //index=ptr.getData();
-         
-         
          //System.out.println("Seq Array= " +seqArray[index]);
          //index++;
          //return seqArray[index];
