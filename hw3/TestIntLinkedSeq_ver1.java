@@ -15,7 +15,7 @@ public class TestIntLinkedSeq_ver1
       seq1.addAfter(90);
       seq1.addFirst(33);
       seq1.start();
-      seq1.removeLast();
+      //seq1.removeLast();
       seq1.advance();
       seq1.removeCurrent();
       seq1.addFirst(12);

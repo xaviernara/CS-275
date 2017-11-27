@@ -7,19 +7,19 @@
     <Snap>true</Snap>
     <Show>false</Show>
   </Grid>
-  <Scope id="0">
+  <Scope id="1">
     <Name>addFirst</Name>
     <Signature>(I)V</Signature>
     <DeclaringType>IntLinkedSeq</DeclaringType>
     <Depth>1</Depth>
   </Scope>
-  <Scope id="2">
+  <Scope id="0">
     <Name>main</Name>
     <Signature>([Ljava/lang/String;)V</Signature>
     <DeclaringType>TestIntLinkedSeq_ver1</DeclaringType>
     <Depth>0</Depth>
   </Scope>
-  <Scope id="1">
+  <Scope id="2">
     <Name>catenation</Name>
     <Signature>(LIntSeq;)LIntSeq;</Signature>
     <DeclaringType>IntLinkedSeq</DeclaringType>
@@ -28,16 +28,30 @@
   <Frame>
     <Bounds>
       <AutoSize>true</AutoSize>
+      <X>80</X>
+      <Y>360</Y>
+      <W>427</W>
+      <H>85</H>
+    </Bounds>
+    <Viewer>
+      <ScopeID>0</ScopeID>
+      <Expression>((IntLinkedSeq) `local IntSeq` seq1).cursor</Expression>
+      <ViewerClass>java__lang__Object_LinkedView</ViewerClass>
+    </Viewer>
+  </Frame>
+  <Frame>
+    <Bounds>
+      <AutoSize>true</AutoSize>
       <X>420</X>
       <Y>110</Y>
-      <W>62</W>
-      <H>44</H>
+      <W>65</W>
+      <H>47</H>
     </Bounds>
     <LabelLoc>
       <WO>false</WO>
     </LabelLoc>
     <Viewer>
-      <ScopeID>0</ScopeID>
+      <ScopeID>1</ScopeID>
       <Expression>this.manyItems</Expression>
       <ViewerClass>_X_ElementView</ViewerClass>
     </Viewer>
@@ -47,11 +61,11 @@
       <AutoSize>true</AutoSize>
       <X>80</X>
       <Y>360</Y>
-      <W>538</W>
-      <H>230</H>
+      <W>541</W>
+      <H>233</H>
     </Bounds>
     <Viewer>
-      <ScopeID>1</ScopeID>
+      <ScopeID>2</ScopeID>
       <Expression>`local IntSeq` s2</Expression>
       <ViewerClass>java__lang__Object_LinkedView</ViewerClass>
     </Viewer>
@@ -61,26 +75,12 @@
       <AutoSize>true</AutoSize>
       <X>30</X>
       <Y>70</Y>
-      <W>165</W>
-      <H>102</H>
+      <W>168</W>
+      <H>105</H>
     </Bounds>
     <Viewer>
-      <ScopeID>0</ScopeID>
+      <ScopeID>1</ScopeID>
       <Expression>this</Expression>
-      <ViewerClass>java__lang__Object_LinkedView</ViewerClass>
-    </Viewer>
-  </Frame>
-  <Frame>
-    <Bounds>
-      <AutoSize>true</AutoSize>
-      <X>80</X>
-      <Y>360</Y>
-      <W>424</W>
-      <H>82</H>
-    </Bounds>
-    <Viewer>
-      <ScopeID>2</ScopeID>
-      <Expression>((IntLinkedSeq) `local IntSeq` seq1).cursor</Expression>
       <ViewerClass>java__lang__Object_LinkedView</ViewerClass>
     </Viewer>
   </Frame>

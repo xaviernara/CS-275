@@ -189,20 +189,27 @@ public class IntLinkedSeq extends IntSeq
    */
    public void addLast(int element)
    {
-   
-      if (tail.getLink()== null){
-         tail.setLink( new IntNode(element, null));
-         tail = tail.getLink();
-      //tail = new IntNode(element, null);
-         manyItems++;
-       }
-       
-       else{
-         tail.setLink( new IntNode(element, tail.getLink()));
-         tail = tail.getLink();
-      //tail = new IntNode(element, null);
-         manyItems++;
-       }
+      IntNode ptr = head;
+      
+      while(head!=null){ 
+         ptr.getLink();
+         
+         //if (tail.getLink()== null){
+         if(ptr==null){
+            tail=ptr;
+            tail.setLink( new IntNode(element, null));
+            tail = tail.getLink();
+         //tail = new IntNode(element, null);
+            manyItems++;
+          }
+          
+          else{
+            tail.setLink( new IntNode(element, tail.getLink()));
+            tail = tail.getLink();
+         //tail = new IntNode(element, null);
+            manyItems++;
+          }
+      }
        
     
      
@@ -435,10 +442,16 @@ public class IntLinkedSeq extends IntSeq
    */
    public void advance( )
    {
-      if (cursor.getLink() != null) 
-         cursor.setLink(cursor.getLink()); 
-      else
-         cursor = null;
+     IntNode ptr= head;
+     while(head!=null){
+         ptr.getLink();
+         //if (cursor.getLink() != null)
+         if (ptr==cursor && cursor.getLink() != null) 
+           cursor.setLink(cursor.getLink()); 
+         if (ptr==cursor && cursor.getLink() == null) 
+           invalidateCurrent();
+
+      }
    }
 
 
