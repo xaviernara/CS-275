@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <Canvas xmlns="http://www.jgrasp.org">
   <Language>Java</Language>
@@ -93,3 +94,100 @@
     <H>728</H>
   </ESize>
 </Canvas>
+=======
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Canvas xmlns="http://www.jgrasp.org">
+  <Language>Java</Language>
+  <ShowTypes>false</ShowTypes>
+  <Version>2</Version>
+  <Grid>
+    <Snap>true</Snap>
+    <Show>false</Show>
+  </Grid>
+  <Scope id="1">
+    <Name>addFirst</Name>
+    <Signature>(I)V</Signature>
+    <DeclaringType>IntLinkedSeq</DeclaringType>
+    <Depth>1</Depth>
+  </Scope>
+  <Scope id="0">
+    <Name>main</Name>
+    <Signature>([Ljava/lang/String;)V</Signature>
+    <DeclaringType>TestIntLinkedSeq_ver1</DeclaringType>
+    <Depth>0</Depth>
+  </Scope>
+  <Scope id="2">
+    <Name>catenation</Name>
+    <Signature>(LIntSeq;)LIntSeq;</Signature>
+    <DeclaringType>IntLinkedSeq</DeclaringType>
+    <Depth>1</Depth>
+  </Scope>
+  <Frame>
+    <Bounds>
+      <AutoSize>true</AutoSize>
+      <X>80</X>
+      <Y>360</Y>
+      <W>427</W>
+      <H>85</H>
+    </Bounds>
+    <Viewer>
+      <ScopeID>0</ScopeID>
+      <Expression>((IntLinkedSeq) `local IntSeq` seq1).cursor</Expression>
+      <ViewerClass>java__lang__Object_LinkedView</ViewerClass>
+    </Viewer>
+  </Frame>
+  <Frame>
+    <Bounds>
+      <AutoSize>true</AutoSize>
+      <X>420</X>
+      <Y>110</Y>
+      <W>65</W>
+      <H>47</H>
+    </Bounds>
+    <LabelLoc>
+      <WO>false</WO>
+    </LabelLoc>
+    <Viewer>
+      <ScopeID>1</ScopeID>
+      <Expression>this.manyItems</Expression>
+      <ViewerClass>_X_ElementView</ViewerClass>
+    </Viewer>
+  </Frame>
+  <Frame>
+    <Bounds>
+      <AutoSize>true</AutoSize>
+      <X>80</X>
+      <Y>360</Y>
+      <W>541</W>
+      <H>233</H>
+    </Bounds>
+    <Viewer>
+      <ScopeID>2</ScopeID>
+      <Expression>`local IntSeq` s2</Expression>
+      <ViewerClass>java__lang__Object_LinkedView</ViewerClass>
+    </Viewer>
+  </Frame>
+  <Frame>
+    <Bounds>
+      <AutoSize>true</AutoSize>
+      <X>30</X>
+      <Y>70</Y>
+      <W>168</W>
+      <H>105</H>
+    </Bounds>
+    <Viewer>
+      <ScopeID>1</ScopeID>
+      <Expression>this</Expression>
+      <ViewerClass>java__lang__Object_LinkedView</ViewerClass>
+    </Viewer>
+  </Frame>
+  <Size>
+    <W>697</W>
+    <H>728</H>
+  </Size>
+  <ESize>
+    <W>697</W>
+    <H>728</H>
+  </ESize>
+</Canvas>
+>>>>>>> db2371c213736e43ca6ef24f27537adbbfa52197
