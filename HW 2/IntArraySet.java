@@ -442,8 +442,8 @@ public class IntArraySet extends IntSet
      trimToSize();
      
      for(int i = 0 ; i < capacity; i++){
-           minused_set[i] = toArray()[i];
-             }
+        minused_set[i] = toArray()[i];
+      }
 
      for(int i = 0 ; i < subtract_set.size(); i++){
        for(int j = 0 ; j < minused_set.length; j++){

@@ -30,7 +30,7 @@ public static void main(String[ ] args)
     //set2.subtract()
    // System.out.println("SIZE"+set2.size());
     //set3=set1.union(set2);
-    set1.subtract(set1);
+    set2.subtract(set1);
     
     
      System.out.println("Old Set 1 = ");

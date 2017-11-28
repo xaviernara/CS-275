@@ -9,13 +9,43 @@ public class TestIntLinkedSeq_ver1
       IntSeq seq1 = new IntLinkedSeq( );
       IntSeq seq2 = new IntLinkedSeq( );
 
+      //seq1.addAfter(77);
       seq1.addFirst(42);
-      if ( seq1.size() != 1 || !seq1.contains(42) )
+      seq1.addAfter(78);
+      seq1.addAfter(90);
+      seq1.addFirst(33);
+      seq1.start();
+      //seq1.removeLast();
+      seq1.advance();
+      seq1.removeCurrent();
+      seq1.addFirst(12);
+      seq1.addLast(1);
+      seq1.addLast(19);
+      seq1.reverse();
+      //seq1.catenation(seq1);
+      
+      System.out.println("cancatenate"+seq1.catenation(seq1) );
+
+      
+      //seq1.removeFirst();
+      
+      //System.out.println("cursor = "+seq1.getCurrentValue());  
+          
+      System.out.println( seq1 );
+      
+      if ( seq1.size() != 4) //|| !seq1.contains(42) )
       {
          System.out.println("1. There is something wrong with addFirst() or contains().");
          System.out.println( seq1 );
-         System.exit(-1);
+         //System.exit(-1);
       }
+      
+      //seq2.addLast(1);
+      
+    
+      
+      
+      /*
       seq1.removeLast();
       if ( seq1.size() != 0 || seq1.contains(42) )
       {
@@ -110,7 +140,7 @@ public class TestIntLinkedSeq_ver1
          System.out.println( seq1 );
          System.exit(-1);
       }
-
+      */
 
       System.out.println("Your class IntLinkedSeq passed all these tests.");
    }//main()
