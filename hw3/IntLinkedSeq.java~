@@ -78,7 +78,6 @@ public class IntLinkedSeq extends IntSeq
    */
    public void addAfter(int element)
    {
-     
       IntNode ptr= head;
    
    //case2 : If there was no current element, then the new element is placed at the end of the sequence.
@@ -97,16 +96,12 @@ public class IntLinkedSeq extends IntSeq
         // head.getLink(new IntNode(element, head.getLink()));
       cursor.setLink( new IntNode(element, cursor.getLink()));
       manyItems++;  
-      System.out.println("before");
+      
       while (head!=null){
          ptr=ptr.getLink();
-         if (ptr.getLink()==null){
+         if (ptr.getLink()==null)
             tail=ptr;
-            break;
-         }
-      } 
-      
-      System.out.println("after");
+      }     
    }
 
 
@@ -384,14 +379,11 @@ public class IntLinkedSeq extends IntSeq
          {
             //cursor.setLink(cursor.getLink());
            cursor=cursor.getLink().getLink();
-           manyItems--;
-           
          }
-        else 
+        else
          {
             cursor.setLink(cursor.getLink());
             tail = cursor;
-            manyItems--;
          }
       
       
@@ -419,11 +411,8 @@ public class IntLinkedSeq extends IntSeq
    public void removeFirst( )
    {
      //case 1: if theres more than 1 node in the seq the first node is removed by making head point to the next node in the seq
-     if (head != null || head != tail){
+     if (head != null || head != tail)
         head = head.getLink();
-        manyItems--;
-     }
-     
           
      //case 2: The first element of the sequence is deleted from the sequence.
      //If this was the current element, then the current element status is invalidated.
@@ -433,7 +422,6 @@ public class IntLinkedSeq extends IntSeq
      if (head == null){
          invalidateCurrent();   
          System.out.println("Theres no nodes in the Seq");
-         manyItems=0;
         }
 
    }
@@ -465,7 +453,6 @@ public class IntLinkedSeq extends IntSeq
                //tail.setLink(ptr.getLink()-1);
                tail=ptr;
                ptr.getLink().getLink();
-               manyItems--;
              }
          }   
 
@@ -496,7 +483,6 @@ public class IntLinkedSeq extends IntSeq
          //ptr=ptr.getLink();
          //if (cursor.getLink() != null)
          //if (ptr==cursor && cursor.getLink() != null) 
-     
          if (cursor.getLink()!= null)
            //cursor.setLink(cursor.getLink()); 
            cursor=cursor.getLink();
