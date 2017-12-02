@@ -8,7 +8,7 @@
 */
 public class TestIntArraySet
 {
-public static void main(String[ ] args)
+/*public static void main(String[ ] args)
    {
 
       
@@ -69,7 +69,7 @@ public static void main(String[ ] args)
        //  System.out.printf("%d" , set1.toArray()[i]);
     // }
      
-/*
+
    public static void main(String[ ] args)
    {
       IntSet set1 = new IntArraySet( );
@@ -149,6 +149,7 @@ public static void main(String[ ] args)
       if ( 0 != set1.size() )
       {
          System.out.println("9. There is something wrong with subtract().");
+         System.out.println(set1);
          return;
       }
 
@@ -285,6 +286,7 @@ public static void main(String[ ] args)
         || !set3.contains(18)
         || !set3.contains(19) )
       {
+         System.out.println(set3);
          System.out.println("19. There is something wrong with minus().");
          return;
       }
@@ -314,4 +316,4 @@ public static void main(String[ ] args)
       System.out.println("Your class IntArraySet passed all the tests.");
    }
    
-}*/
+}

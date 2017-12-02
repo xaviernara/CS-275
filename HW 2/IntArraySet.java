@@ -331,16 +331,15 @@ public class IntArraySet extends IntSet
             
             if(check_size > data.length){
             
-            int[] data_cpy = new int[data.length];
+            int[] data_cpy = new int[manyItems];
             for(int a = 0 ; a < data.length; a++){
                data_cpy[a] = data[a];
-             
             }
              data = new int[data.length + 1];
-            for(int a = 0 ; a < data.length; a++){
+            for(int a = 0 ; a < manyItems; a++){
                data[a] = data_cpy[a];
             } 
-            }
+          }
             
             
        for(int  j = 0 ; j < size(); j++){
@@ -429,38 +428,29 @@ public class IntArraySet extends IntSet
    **/
 
       public void subtract(IntSet subtract_set)
-   {
-
-      System.out.println("capacity = "+ getCapacity());
-      boolean unique = true; //checking for ununique numbers in the subtract_set
-
-   
-     int capacity = getCapacity();
-     
-     int [] minused_set = new int[capacity];
+   {  
+  
+     int [] minused_set = new int[manyItems];
      //copy data array into minused_set
-     trimToSize();
+     //trimToSize();
      
-     for(int i = 0 ; i < capacity; i++){
+     for(int i = 0 ; i < size(); i++){
         minused_set[i] = toArray()[i];
       }
 
-     for(int i = 0 ; i < subtract_set.size(); i++){
-       for(int j = 0 ; j < minused_set.length; j++){
-        if(subtract_set.toArray()[i] == minused_set[j]){
-           unique = false;
-         
+     for(int i = 0 ; i <minused_set.length ; i++){
+       for(int j = 0 ; j < subtract_set.size(); j++){
+        if(subtract_set.toArray()[j] == minused_set[i]){
+           //subtract_set.remove(minused_set[j]);
+           remove(data[i]);
+        
          }
+       
         }
 
-      if(unique == false){
-         minused_set[i] = data[size() - 1];
-          manyItems--;         
-        }
-       unique = true;
      }
 
-  ensureCapacity(minused_set.length);
+ /* //ensureCapacity(minused_set.length);
 
      System.out.printf("Subtracted SET ");
 
@@ -472,6 +462,7 @@ public class IntArraySet extends IntSet
      }
 
      System.out.println();
+     */
     }
    
    
@@ -670,7 +661,6 @@ public class IntArraySet extends IntSet
 
    public IntSet minus(IntSet set2)
    {  
-    
       int [] set2_array = new int [size()];
       IntSet minused_set = new IntArraySet();
 
@@ -678,18 +668,19 @@ public class IntArraySet extends IntSet
            minused_set.add(toArray()[i]);
            }
            
-          for(int j = 0 ; j < set2.size(); j++){
-             set2_array[j] = toArray()[j];
+        /* // for(int j = 0 ; j < set2_array.length; j++){
+           //  set2_array[j] = toArray()[j];
            }
            for(int j = 0 ; j < set2_array.length; j++){
               if(minused_set.contains(set2_array[j])){
                //if(minused_set==set2_array[j]){
                 minused_set.remove(set2_array[j]);
                
-              }
-       }
+              }*/
+            minused_set.subtract(set2); 
+       
     return  minused_set;
-}
+   }
 
 
 
