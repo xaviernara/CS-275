@@ -17,19 +17,30 @@ public class TestIntLinkedSeq_ver1
       seq1.setCurrent(2);
       seq1.addBefore(69);
       
-      //seq1.start();
+      seq2.addFirst(42);
+      seq2.addFirst(78);
+      seq2.addFirst(90);
+      seq2.addFirst(33);
+      seq2.setCurrent(2);
+      seq2.addBefore(69);
+
+     
       //seq1.removeLast();
-      //seq1.advance();
-      //seq1.advance();
+    
       seq1.removeCurrent();
       System.out.println( "after remvoed current "+ seq1 );
       
       seq1.addFirst(12);
       seq1.addLast(1);
       seq1.addLast(19);
-      System.out.println("before current advance "+ seq1 );
-      seq1.advance();
-      System.out.println("after current advance "+ seq1 );
+      seq1.removeLast();
+
+     //int[] arrayFromList = seq1.toArray();
+     int[] arrayFromList2 = seq2.toArray();
+      
+     //System.out.println("array from seq [ " +arrayFromList+ " ]"  );
+     System.out.println("array from seq [ " +arrayFromList2+ " ]"  );
+      
      
       //seq1.setCurrent(3);
      // seq1.reverse();

@@ -38,7 +38,7 @@ public class IntLinkedSeq extends IntSeq
       IntNode head =null;
       IntNode tail= head;
       IntNode cursor =head;
-      
+      manyItems=0;
 
    }
 
@@ -60,6 +60,22 @@ public class IntLinkedSeq extends IntSeq
 
 
    }
+
+
+   public void SetTail(){
+      IntNode ptr =head;
+     
+      while (head!= head){
+         ptr=ptr.getLink();
+         
+         if (ptr.getLink() == null){
+            tail=ptr;
+            break;
+           }
+      }
+      
+   }
+
 
 
 
@@ -97,16 +113,8 @@ public class IntLinkedSeq extends IntSeq
         // head.getLink(new IntNode(element, head.getLink()));
       cursor.setLink( new IntNode(element, cursor.getLink()));
       manyItems++;  
-      System.out.println("before");
-      while (head!=null){
-         ptr=ptr.getLink();
-         if (ptr.getLink()==null){
-            tail=ptr;
-            break;
-         }
-      } 
       
-      System.out.println("after");
+      SetTail(); 
    }
 
 
@@ -149,7 +157,7 @@ public class IntLinkedSeq extends IntSeq
         // head.getLink(new IntNode(element, head.getLink()));
       //cursor.setLink( new IntNode(element, cursor.getLink()));
       //manyItems++; 
-      
+      SetTail();
       }   
    }
 
@@ -213,7 +221,9 @@ public class IntLinkedSeq extends IntSeq
             //tail = head;
             manyItems++;
             //return;
-        }             
+        }  
+        
+        SetTail();           
    }
    
 
@@ -666,7 +676,32 @@ public class IntLinkedSeq extends IntSeq
    
    
 
-
+ /**
+   * Create a new sequence that contains all the elements from
+   * this sequence that are between the indices fromIndex, inclusive,
+   * and toIndex, exclusive. (If fromIndex and toIndex are equal,
+   * the returned sequence is empty.) The returned sequence should not
+   * be backed by this sequence (so changes to the returned sequence
+   * are not reflected in this sequence).
+   * The new sequence should not have a current element.
+   *
+   * @param fromIndex
+   *    low endpoint (inclusive) of the sub sequence
+   * @param toIndex
+   *   high endpoint (exclusive) of the sub sequence
+   * @precondition
+   *   fromIndex is less than or equal to toIndex (fromIndex <= toIndex),
+   *   fromIndex is greater than or equal to zero (fromIndex >= 0),
+   *   toIndex is less than or equal to size (toIndex <= size)
+   * @return
+   *   a new sequence that contains all the elements from this
+   *   sequence that are between the indices fromIndex, inclusive,
+   *   and toIndex, exclusive.
+   * @exception IllegalArgumentException
+   *   if the endpoint indices are out of order (fromIndex > toIndex)
+   * @exception IndexOutOfBoundsException
+   *   endpoint index value out of range (fromIndex < 0 || toIndex > size)
+   */
    public IntSeq subSeq(int fromIndex, int toIndex)
    {
 
