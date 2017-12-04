@@ -55,10 +55,44 @@ public class IntLinkedSeq extends IntSeq
    *   The copy should have its cursor set in the appropriate
    *   place within its linked list.
    **/
-   public IntLinkedSeq(IntLinkedSeq otherSequence)
+     public IntLinkedSeq(IntLinkedSeq otherSequence)
    {
-
-
+	   int size_other = otherSequence.size();
+	   int curr_val = 0;
+	   int index;
+	   boolean wasCurrent = false;//check to see if there was a current value if so set to true
+	   IntNode ptr ;
+	   if(otherSequence.size() != 0 ){
+		   if(otherSequence.isCurrent()){
+			   wasCurrent = true;
+			   curr_val = otherSequence.getCurrentValue();
+		   }
+		   otherSequence.start();
+		   head = new IntNode(otherSequence.getCurrentValue() , null);
+		   manyItems++;
+		   tail = head;
+		   ptr = head;
+		   
+		   for(int i = 0 ; i < size_other; i++){
+			   if(i != 0 ){
+				   addLast(otherSequence.getCurrentValue());	   
+			   } 
+			   otherSequence.advance();  
+		   }
+		   if(wasCurrent){
+			   cursor = head;
+			   index = indexOf(curr_val);
+			   for(int i = 0 ; i < index; i++){
+			   advance();  
+		   }		   
+		   }		   
+	   }
+	   else{
+		   head = null;
+		   tail = null;
+		   cursor = null;
+	   }
+	   
    }
 
 
@@ -134,15 +168,41 @@ public class IntLinkedSeq extends IntSeq
    public void addBefore(int element){
      
       IntNode ptr = head;
-      IntNode ptr2= null;
-      while(head!=null){
-         ptr2=ptr;
-         ptr=ptr.getLink();
-         //ptr2=ptr.getLink();
-         ptr2=ptr2.getLink();
-
+      IntNode before_current =new IntNode(element, null);
+      before_current.setLink(cursor);
+      int index =0;
+          //ptr2=ptr.getLink();
+         //ptr2=ptr2.getLink();
+   if (cursor!=null){
+      index = indexOf(getCurrentValue());
       //case1 : If there was a current element, then the new element is placed before the current element.
-      
+       if (index==0){
+         head = before_current;
+         cursor = before_current;
+         }
+         else if (size() == 1){
+			   before_current.setLink(cursor);
+			   head = before_current;
+			   cursor = before_current;
+		   }
+         else{
+			   while(ptr.getLink() != cursor){
+				   ptr = ptr.getLink();
+			   }
+			   ptr.setLink(before_current);
+			   cursor = before_current;
+			   
+		   }
+         manyItems++;
+		  }
+		   
+       else{
+         addFirst(element);
+		   cursor = head;
+       } 
+       SetTail();
+     }
+       /* 
        if(ptr==cursor && cursor.getLink()!=null){
         cursor.setLink( new IntNode(element,ptr2.getLink()));
         //cursor = ptr2.getLink();
@@ -156,10 +216,11 @@ public class IntLinkedSeq extends IntSeq
      //if(cursor != null)
         // head.getLink(new IntNode(element, head.getLink()));
       //cursor.setLink( new IntNode(element, cursor.getLink()));
-      //manyItems++; 
-      SetTail();
-      }   
-   }
+      manyItems++; 
+      */
+      
+        
+   
 
 
    /**
@@ -176,7 +237,15 @@ public class IntLinkedSeq extends IntSeq
    */
    public void addAll(IntSeq addend)
    {
-   
+      //IntNode ptr = addend.head;
+      int[] addend_array= new int[addend.size()];
+      addend_array = addend.toArray();
+      
+      int index=0;
+      while(addend.size() != 0){
+         addLast(addend_array[index]);
+         index++;
+      }
 
 
    }
@@ -238,20 +307,40 @@ public class IntLinkedSeq extends IntSeq
    */
    public void addLast(int element)
    {
-      IntNode ptr = head;
+      IntNode ptr = new IntNode(element, null);
       
-      while(head!=null){ 
-         ptr=ptr.getLink();
+      //while(head!=null){ 
+         
          
          //if (tail.getLink()== null){
-         if(ptr.getLink()==null){
+         //if(ptr.getLink()==null){
+         if(head==null){
+            
+            //ptr= new IntNode(element, null);
             tail=ptr;
-            tail.setLink( new IntNode(element, null));
-            tail = tail.getLink();
+            //tail.setLink( new IntNode(element, null));
+            head=tail;
+            //tail = tail.getLink();
          //tail = new IntNode(element, null);
             manyItems++;
-            break;
+            //break;
           }
+          //ptr=ptr.getLink();
+          
+          else{
+            tail.setLink(ptr);
+            tail=ptr;
+            //tail.setLink( new IntNode(element, null));
+            //head=tail;
+            //tail = tail.getLink();
+         //tail = new IntNode(element, null);
+            manyItems++;
+            //break;
+            }
+         //}
+         System.out.println("manyItems = " + manyItems);
+
+      }
           
          // else{
            // tail.setLink( new IntNode(element, tail.getLink()));
@@ -259,15 +348,9 @@ public class IntLinkedSeq extends IntSeq
          //tail = new IntNode(element, null);
             //manyItems++;
           //}
-      }
-       
-    
-     
-      System.out.println("manyItems = " + manyItems);
-      
-      //cursor = tail;
-      
-   }
+             
+      //cursor = tail;  
+   
 
 
    /**
@@ -390,20 +473,31 @@ public class IntLinkedSeq extends IntSeq
           //         throw new Error("nothing there");
 
         //if ( null != cursor.getLink().getLink() )
-        if (isCurrent() == true)
+        
+      IntNode ptr = head;
+      while(head != null){
+        ptr=ptr.getLink();
+      
+        if (ptr == cursor && isCurrent() == true)
+         {
+            ptr.setLink(cursor.getLink());
+            //cursor.setLink(cursor.getLink());
+           // cursor=cursor.getLink();
+           cursor=ptr; 
+            manyItems--;
+            System.out.println ("manyItens after removed current = " +manyItems);
+            SetTail();
+            break;
+         }
+        else if (ptr == cursor && cursor.getLink() != null) 
          {
             //cursor.setLink(cursor.getLink());
-           cursor=cursor.getLink().getLink();
-           manyItems--;
-           
-         }
-        else 
-         {
-            cursor.setLink(cursor.getLink());
-            tail = cursor;
+            invalidateCurrent();
+            SetTail();
             manyItems--;
+            break;
          }
-      
+      }
       
       
       
@@ -466,9 +560,9 @@ public class IntLinkedSeq extends IntSeq
 
      public void removeLast( )
    {
-      IntNode ptr;
-      ptr=head;
-         for (int i=0; ptr!=null && i<size()-1; i++){
+      IntNode ptr= head;
+ 
+     /*    for (int i=0; ptr!=null && i<size()-1; i++){
             ptr.getLink();
             //if (ptr == null || ptr.getLink()== null)
             if (ptr.getLink()== null){
@@ -478,7 +572,40 @@ public class IntLinkedSeq extends IntSeq
                manyItems--;
              }
          }   
-
+      */
+       if(size() != 0){
+		   if(size() == 1){
+		   head = null;
+		   invalidateCurrent();
+		   tail = null;
+		   
+		   
+			}
+		   else{
+			   ptr = head;
+			   while(ptr.getLink() != null)
+			   {
+					ptr = ptr.getLink();
+			   }
+			   ptr.setLink(null);
+			   tail = ptr;
+			   
+			   if(cursor == tail){ 
+				   invalidateCurrent();
+			   }
+			   
+		   }
+			   
+		   
+		   
+		   manyItems--; 
+	   }
+	   
+	   else{
+		   throw new IllegalStateException("Senquence is already empty cannot remove");
+	   }
+	    //More than one value in sequence Case  
+           
    }
    
 
@@ -645,7 +772,7 @@ public class IntLinkedSeq extends IntSeq
    
    public IntSeq catenation(IntSeq s2)
    {  
-      IntSeq newSeq = new IntLinkedSeq();
+      /*IntSeq newSeq = new IntLinkedSeq();
       IntNode head1;
       IntNode head2;
       IntNode tail2;
@@ -672,6 +799,34 @@ public class IntLinkedSeq extends IntSeq
       //tail=head;
 
       return newSeq; // Replace this return statement with your own code:
+      */
+      IntSeq cat_seq = new IntLinkedSeq() ;
+	   int orignal_cnt = 0;
+	   int append_cnt = 0;
+	   int catSize = size() + s2.size();
+	   int[] combinedAry = new int[catSize];
+	   int[] originalAry = new int[size()];
+	   int[] appendedAry = new int[s2.size()];
+	   originalAry = toArray();
+	   appendedAry = s2.toArray();
+	   //placing all values in a catenated Array 
+	   for(int i = 0; i < catSize ; i++){
+		   if(i < size()){
+			   combinedAry[i] = originalAry[orignal_cnt];
+			   orignal_cnt++;
+		   } 
+		   else{
+			   combinedAry[i] = appendedAry[append_cnt];
+			   append_cnt++;
+		   }
+		   
+	   }
+	   for(int i = 0 ; i < catSize; i++){
+		   cat_seq.addLast(combinedAry[i]);
+		   
+	   }   
+
+      return cat_seq; // Replace this return statement with your own code:
    }
    
    
@@ -702,12 +857,44 @@ public class IntLinkedSeq extends IntSeq
    * @exception IndexOutOfBoundsException
    *   endpoint index value out of range (fromIndex < 0 || toIndex > size)
    */
-   public IntSeq subSeq(int fromIndex, int toIndex)
+  public IntSeq subSeq(int fromIndex, int toIndex)
    {
+	   IntSeq sub_seq = new IntLinkedSeq( );
+	   setCurrent(fromIndex);
+	   int SUBSIZE = toIndex   - fromIndex ;//Done to get right amount of loops 
+	   int[] main_seq = new int[size()];
+	   //sub_seq.setCurrent(fromIndex);
+	   if(fromIndex == toIndex){
+		   sub_seq.invalidateCurrent();
+		   return sub_seq;
+	   }
+	   if((fromIndex <= toIndex) && (fromIndex >= 0)&&(toIndex <= size())){
+		   if(size() != 0){
+			   sub_seq.invalidateCurrent();
+			   for(int i = fromIndex ; i < toIndex; i++){
+				   sub_seq.addLast(cursor.getData());
+				   advance();
+				   
+			   }
+			   
+			   
+		   }
+		   else{
+			   throw new IllegalStateException("Subsequence can't be made because original sequence has no elements. (see documentation)");
+			   
+		   }
+	   }
+	   else if(fromIndex > toIndex){
+		   throw new IllegalStateException("fromIndex must be less than toIndex. (see documentation)");
+	   }
+	   else{
+		   throw new IndexOutOfBoundsException("Check size of fromIndex is greater that 0. Also check toIndex is < size");
+	   }
 
 
-      return null; // Replace this return statement with your own code:
+      return sub_seq; // Replace this return statement with your own code:
    }
+
 
 
     /**
@@ -724,23 +911,25 @@ public class IntLinkedSeq extends IntSeq
    */ 
    public IntSeq reverse( )
    {
-      IntNode currentPtr = head;
-      IntNode prevPtr=null;
-      IntNode nextPtr=null;
+      IntSeq reversedSeq= new IntLinkedSeq();
+      //currentPtr = head;
+      IntNode ptr=head;
+      //IntNode nextPtr=null;
       
-      while (currentPtr!=null){
-         nextPtr=currentPtr.getLink();
+      while (ptr!=null){
+         //nextPtr=currentPtr.getLink();
          //currentPtr.getLink()=prevPtr;
-         prevPtr=currentPtr.getLink();
-
-         prevPtr=currentPtr;
-         currentPtr=nextPtr;
+         //prevPtr=currentPtr.getLink();
+         reversedSeq.addFirst(ptr.getData());
+         ptr=ptr.getLink();
+         //prevPtr=currentPtr;
+         //currentPtr=nextPtr;
          }
-         head=prevPtr;
+         //head=prevPtr;
       
       
 
-      return null; // Replace this return statement with your own code:
+      return reversedSeq; // Replace this return statement with your own code:
    }
    
 
