@@ -8,28 +8,49 @@ public class TestIntLinkedSeq_ver1
    {
       IntSeq seq1 = new IntLinkedSeq( );
       IntSeq seq2 = new IntLinkedSeq( );
-
+ /*
       //seq1.addAfter(77);
       seq1.addFirst(42);
+      seq1.removeFirst();
+      System.out.println("seq1 after first removed " +seq1 );
       seq1.addFirst(78);
       seq1.addFirst(90);
       seq1.addFirst(33);
-      seq1.setCurrent(2);
-      seq1.addBefore(69);
+      seq1.setCurrent(1);
       
-      //seq1.start();
+      
+      //seq1.addBefore(69);
+      seq1.removeCurrent();
+      System.out.println("seq1 after removed current "+ seq1);
+      
+      
+      seq2.addFirst(1);
+      seq2.addFirst(2);
+      seq2.addFirst(3);
+      seq2.addFirst(4);
+      seq2.setCurrent(2);
+      seq2.addBefore(6);
+      
+      seq1.addAll(seq2);
+
+     
       //seq1.removeLast();
-      //seq1.advance();
-      //seq1.advance();
+    
       seq1.removeCurrent();
       System.out.println( "after remvoed current "+ seq1 );
       
       seq1.addFirst(12);
       seq1.addLast(1);
       seq1.addLast(19);
-      System.out.println("before current advance "+ seq1 );
-      seq1.advance();
-      System.out.println("after current advance "+ seq1 );
+      seq1.removeLast();
+  
+
+     //int[] arrayFromList = seq1.toArray();
+     int[] arrayFromList2 = seq2.toArray();
+      
+     //System.out.println("array from seq [ " +arrayFromList+ " ]"  );
+     System.out.println("array from seq [ " +arrayFromList2+ " ]"  );
+      
      
       //seq1.setCurrent(3);
      // seq1.reverse();
@@ -52,11 +73,11 @@ public class TestIntLinkedSeq_ver1
       }
       
       //seq2.addLast(1);
+     
+    */
       
-    
       
-      
-      /*
+      seq1.addFirst(42);
       seq1.removeLast();
       if ( seq1.size() != 0 || seq1.contains(42) )
       {
@@ -151,8 +172,9 @@ public class TestIntLinkedSeq_ver1
          System.out.println( seq1 );
          System.exit(-1);
       }
-      */
+      
 
       System.out.println("Your class IntLinkedSeq passed all these tests.");
-   }//main()
-}//TestIntLinkedSeq_ver1
+   }//main() 
+ }//TestIntLinkedSeq_ver1
+//}
