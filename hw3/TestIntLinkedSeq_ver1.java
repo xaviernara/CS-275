@@ -8,7 +8,11 @@ public class TestIntLinkedSeq_ver1
    {
       IntSeq seq1 = new IntLinkedSeq( );
       IntSeq seq2 = new IntLinkedSeq( );
+<<<<<<< HEAD
  /*
+=======
+/*
+>>>>>>> f5d1e9829f62343600fba0275404b5adda9598ee
       //seq1.addAfter(77);
       seq1.addFirst(42);
       seq1.removeFirst();
@@ -18,7 +22,10 @@ public class TestIntLinkedSeq_ver1
       seq1.addFirst(33);
       seq1.setCurrent(1);
       
+<<<<<<< HEAD
       
+=======
+>>>>>>> f5d1e9829f62343600fba0275404b5adda9598ee
       //seq1.addBefore(69);
       seq1.removeCurrent();
       System.out.println("seq1 after removed current "+ seq1);
@@ -43,7 +50,10 @@ public class TestIntLinkedSeq_ver1
       seq1.addLast(1);
       seq1.addLast(19);
       seq1.removeLast();
+<<<<<<< HEAD
   
+=======
+>>>>>>> f5d1e9829f62343600fba0275404b5adda9598ee
 
      //int[] arrayFromList = seq1.toArray();
      int[] arrayFromList2 = seq2.toArray();
@@ -73,8 +83,13 @@ public class TestIntLinkedSeq_ver1
       }
       
       //seq2.addLast(1);
+<<<<<<< HEAD
      
     */
+=======
+     */ 
+    
+>>>>>>> f5d1e9829f62343600fba0275404b5adda9598ee
       
       
       seq1.addFirst(42);
