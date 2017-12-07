@@ -233,7 +233,7 @@ public class IntLinkedSeq extends IntSeq
    * @postcondition
    *   The elements from addend have been placed at the end of
    *   this sequence. The current element of this sequence remains where it
-   *   was, and the addend is also unchanged.
+   *   was, and the addend is also unchanged.13
    */
    public void addAll(IntSeq addend)
    {
@@ -484,32 +484,32 @@ public class IntLinkedSeq extends IntSeq
       IntNode ptr = head;
       while(head != null){
         ptr=ptr.getLink();
-<<<<<<< HEAD
+
       //The current element has been removed from this sequence
-=======
+
       
->>>>>>> f5d1e9829f62343600fba0275404b5adda9598ee
+
         if (ptr == cursor && isCurrent() == true)
          {
             ptr.setLink(cursor.getLink());
             //cursor.setLink(cursor.getLink());
-<<<<<<< HEAD
+
            cursor=cursor.getLink();
            //cursor=ptr; 
-=======
+
            // cursor=cursor.getLink();
            cursor=ptr; 
->>>>>>> f5d1e9829f62343600fba0275404b5adda9598ee
+
             manyItems--;
             System.out.println ("manyItens after removed current = " +manyItems);
             SetTail();
             break;
          }
-<<<<<<< HEAD
+
         else if (ptr == cursor && isCurrent() == false) 
-=======
+
         else if (ptr == cursor && cursor.getLink() != null) 
->>>>>>> f5d1e9829f62343600fba0275404b5adda9598ee
+
          {
             //cursor.setLink(cursor.getLink());
             invalidateCurrent();
