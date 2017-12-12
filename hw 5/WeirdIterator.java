@@ -9,7 +9,6 @@ import java.util.NoSuchElementException;
 
 public class WeirdIterator<T> implements Iterator<T>
 {
- //what fields do you need?
   private WeirdArray<T> arrayData;
   private int currentSize;
   private int leftIndex = 0;
@@ -22,10 +21,11 @@ public class WeirdIterator<T> implements Iterator<T>
   private boolean leftRightSide = false;
   //true means use even iteration algorithm
   private boolean evenOddItr = true;
-  
+   
   public WeirdIterator(WeirdArray <T> wa){
    this.arrayData = wa;
    this.currentSize = arrayData.getLength();
+   
    //test for even or odd
    if((this.currentSize%2)== 0){
     evenOddItr = true;
@@ -43,6 +43,15 @@ public class WeirdIterator<T> implements Iterator<T>
    else
     return false;
   }
+
+ /**
+  * Returns true if the iteration has more elements. (In other words, returns true if next() would return an element rather than throwing an exception.)
+  * 
+  * @param none
+  * 
+  * @return 
+  *   true if the iteration has more elements.  
+ **/ 
   public T next(){
    if(leftRightSide){//extract the right side of the array
     

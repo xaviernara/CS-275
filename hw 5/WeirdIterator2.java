@@ -16,6 +16,8 @@ public class WeirdIterator2<T> implements Iterator<T>
  private int rightIndex = 0;
  private int totalReturned = 0;
  private int returnIndex = 0;
+ 
+ 
  //when item number is odd, start iterating
  //from the left side of the array, which is false
  //always start from the left side
@@ -28,6 +30,15 @@ public class WeirdIterator2<T> implements Iterator<T>
   this.leftIndex = 0;
   this.rightIndex = currentSize - 1;
  }
+ 
+/**
+  * Returns true if the iteration has more elements. (In other words, returns true if next() would return an element rather than throwing an exception.)
+  * 
+  * @param none
+  * 
+  * @return 
+  *   true if the iteration has more elements.  
+ **/ 
  public boolean hasNext()
  {
   if(totalReturned < currentSize && totalReturned >= 0)
@@ -35,6 +46,16 @@ public class WeirdIterator2<T> implements Iterator<T>
   else
    return false;
  }
+ 
+/**
+  * Returns the next element in the iteration.
+  * 
+  * @param none
+  * 
+  * @return 
+  *   the next element in the iteration  
+ **/ 
+ 
  public T next()
  {
   if(leftRightSide){
